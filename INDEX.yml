@@ -11,18 +11,30 @@
 meta:
   version: "1.0.0"
   last_updated: "2026-07-05"
-  total_local: 5
+  total_local: 15
   total_external: 350  # eket 70 + agency 280
   search_cmd: "bash tools/search.sh '<keyword>'"
   arena_cmd: "bash tools/arena.sh '<keyword>'"
 
-# ===== 1. 本地专家(5 个示例) =====
+# ===== 1. 本地专家(15 个 = 5 基础 + 10 借鉴) =====
 local:
+  # --- 5 个基础(default) ---
   - {id: backend-architect,  file: experts/tech/backend/backend-architect.md,  emoji: "🏗️"}
   - {id: sre-engineer,       file: experts/tech/devops/sre-engineer.md,        emoji: "🛡️"}
   - {id: llm-engineer,       file: experts/ai/aiml/llm-engineer.md,            emoji: "🤖"}
   - {id: legal-advisor,      file: experts/business/legal-advisor.md,         emoji: "⚖️"}
   - {id: product-manager,    file: experts/design/product-manager.md,        emoji: "🎯"}
+  # --- 10 个借鉴(eket + agency) ---
+  - {id: security-engineer,       file: experts/tech/security/security-engineer.md,         emoji: "🔒"}
+  - {id: devops-engineer,         file: experts/tech/devops/devops-engineer.md,            emoji: "⚙️"}
+  - {id: qa-engineer,             file: experts/tech/qa/qa-engineer.md,                     emoji: "🧪"}
+  - {id: data-analyst,            file: experts/ai/data/data-analyst.md,                     emoji: "📊"}
+  - {id: llm-engineer-senior,     file: experts/ai/llm/llm-engineer.md,                      emoji: "🤖"}
+  - {id: performance-engineer,    file: experts/tech/performance/performance-engineer.md,    emoji: "⚡"}
+  - {id: mobile-engineer,         file: experts/tech/mobile/mobile-engineer.md,             emoji: "📱"}
+  - {id: ux-researcher,          file: experts/design/ux-research/ux-researcher.md,         emoji: "🔍"}
+  - {id: finance-analyst,         file: experts/business/finance/finance-analyst.md,         emoji: "💰"}
+  - {id: legal-compliance,        file: experts/business/legal/legal-compliance.md,         emoji: "📜"}
 
 # ===== 2. 外部库引用(不复制内容) =====
 external:
@@ -109,6 +121,60 @@ triggers:
   内容: ["agency-agents:marketing/content-strategist"]
 
 # ===== 4. Division 映射(从 agency 兼容) =====
+  # ===== 新增 10 个 expert(借鉴 eket + agency) =====
+  安全: ["security-engineer", "eket:tech/security", "agency-agents:security/security-engineer"]
+  渗透: ["eket:tech/security", "agency-agents:security/penetration-tester"]
+  漏洞: ["security-engineer", "eket:tech/security"]
+  加密: ["security-engineer", "eket:tech/security"]
+  DevOps: ["devops-engineer", "eket:tech/devops", "agency-agents:engineering/devops-automator"]
+  CI: ["devops-engineer", "agency-agents:engineering/ci-cd-engineer"]
+  K8s部署: ["devops-engineer", "eket:tech/devops"]
+  持续集成: ["devops-engineer", "agency-agents:engineering/ci-cd-engineer"]
+  持续部署: ["devops-engineer", "agency-agents:engineering/release-engineer"]
+  QA: ["qa-engineer", "agency-agents:testing/qa-automation-engineer"]
+  测试: ["qa-engineer", "agency-agents:testing/qa-automation-engineer"]
+  单元测试: ["qa-engineer", "agency-agents:testing/unit-test-engineer"]
+  E2E: ["qa-engineer", "agency-agents:testing/e2e-engineer"]
+  端到端: ["qa-engineer", "agency-agents:testing/e2e-engineer"]
+  数据分析: ["data-analyst", "eket:ai/data-analyst", "agency-agents:data/data-analyst"]
+  指标: ["data-analyst", "agency-agents:data/metrics-engineer"]
+  A/B: ["data-analyst", "agency-agents:data/ab-test-analyst"]
+  漏斗: ["data-analyst", "agency-agents:data/funnel-analyst"]
+  留存: ["data-analyst", "agency-agents:data/retention-analyst"]
+  LLM: ["llm-engineer-senior", "eket:ai/aiml", "agency-agents:engineering/ai-engineer"]
+  RAG: ["llm-engineer-senior", "agency-agents:engineering/rag-engineer"]
+  向量库: ["llm-engineer-senior", "agency-agents:data/vector-database-engineer"]
+  embedding: ["llm-engineer-senior", "agency-agents:engineering/ai-engineer"]
+  prompt工程: ["llm-engineer-senior", "agency-agents:engineering/prompt-engineer"]
+  智能体: ["llm-engineer-senior", "agency-agents:engineering/agent-engineer"]
+  函数调用: ["llm-engineer-senior", "agency-agents:engineering/ai-engineer"]
+  performance: ["performance-engineer", "eket:tech/performance", "agency-agents:engineering/performance-engineer"]
+  性能: ["performance-engineer", "eket:tech/performance", "agency-agents:engineering/performance-engineer"]
+  性能优化: ["performance-engineer", "eket:tech/performance"]
+  慢查询: ["performance-engineer", "eket:tech/performance", "agency-agents:engineering/database-performance-engineer"]
+  p99: ["performance-engineer", "eket:tech/performance"]
+  移动: ["mobile-engineer", "eket:tech/mobile", "agency-agents:engineering/ios-developer", "agency-agents:engineering/android-developer"]
+  iOS: ["mobile-engineer", "agency-agents:engineering/ios-developer"]
+  Android: ["mobile-engineer", "agency-agents:engineering/android-developer"]
+  Swift: ["mobile-engineer", "agency-agents:engineering/ios-developer"]
+  Kotlin: ["mobile-engineer", "agency-agents:engineering/android-developer"]
+  Flutter: ["mobile-engineer", "agency-agents:engineering/flutter-developer"]
+  React-Native: ["mobile-engineer", "agency-agents:engineering/react-native-developer"]
+  ANR: ["mobile-engineer", "agency-agents:engineering/android-developer"]
+  UX: ["ux-researcher", "eket:design/ux-research", "agency-agents:design/ux-researcher"]
+  用户研究: ["ux-researcher", "eket:design/ux-research", "agency-agents:design/ux-researcher"]
+  可用性: ["ux-researcher", "agency-agents:design/usability-specialist"]
+  财务: ["finance-analyst", "eket:business/finance", "agency-agents:finance/financial-analyst"]
+  收入: ["finance-analyst", "agency-agents:finance/revenue-analyst"]
+  成本: ["finance-analyst", "agency-agents:finance/cost-analyst"]
+  现金流: ["finance-analyst", "agency-agents:finance/cash-flow-analyst"]
+  ROI: ["finance-analyst", "agency-agents:finance/investment-analyst"]
+  合规: ["legal-compliance", "eket:business/legal", "agency-agents:security/grc-analyst"]
+  合同: ["legal-compliance", "agency-agents:finance/contract-specialist"]
+  隐私: ["legal-compliance", "agency-agents:security/privacy-officer"]
+  GDPR: ["legal-compliance", "agency-agents:security/gdpr-specialist"]
+  反腐: ["legal-compliance", "agency-agents:security/anti-corruption-specialist"]
+  知识产权: ["legal-compliance", "agency-agents:legal/ip-specialist"]
 divisions:
   academic: research
   design: design
