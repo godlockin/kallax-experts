@@ -1,0 +1,58 @@
+name: validate
+
+# 安全说明:
+# - 本 workflow 只用 actions/checkout@v4 默认 ref(无 github.event.* 注入)
+# - 不用 github.event.issue.* / pull_request.* 等用户控制字段
+# - 不用 github.event.client_payload.* (防 attacker 设任意字段)
+# - runs-on: ubuntu-latest 是 GitHub 控制,安全
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate-frontmatter:
+    name: Validate expert frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run validate.sh
+        run: |
+          chmod +x tools/validate.sh
+          bash tools/validate.sh
+
+  validate-yaml:
+    name: Validate INDEX.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse INDEX.yml
+        run: |
+          if command -v yq >/dev/null 2>&1; then
+            yq -e '.meta, .local, .external, .triggers, .divisions' INDEX.yml > /dev/null
+            echo "✅ INDEX.yml valid"
+          else
+            # 兜底:Python 解析
+            python3 -c "import yaml; yaml.safe_load(open('INDEX.yml'))" && echo "✅ INDEX.yml valid (python)"
+          fi
+
+  shellcheck:
+    name: ShellCheck tools
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: ShellCheck
+        run: |
+          for f in tools/*.sh; do
+            echo "Checking $f"
+            bash -n "$f" || exit 1
+            shellcheck -S warning "$f" || true
+          done

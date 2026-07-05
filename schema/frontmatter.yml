@@ -1,0 +1,73 @@
+# frontmatter Schema / 标准
+
+# 全部专家 .md 文件**必须**包含此 frontmatter。
+# 工具 scripts/validate.sh 会验证。
+
+# 必填字段
+required:
+  - name             # 中文名(必填)
+  - role_id          # 唯一 ID,小写连字符(必填)
+  - emoji            # 视觉标识(必填)
+  - divisions        # 至少 1 个,参考 agency-agents divisions
+  - triggers         # 至少 1 个语言(zh 或 en)
+
+# 选填字段
+optional:
+  - name_en          # 英文名
+  - color            # 视觉颜色(hex)
+  - vibe             # 一句话定位(<= 30 字)
+  - source           # 来源库(agency-agents / eket / custom / 融合)
+  - source_id        # 原始 ID
+  - domains          # 详细领域
+  - tools            # 常用工具列表
+  - related          # 相关专家(role_id 列表)
+  - priority         # 推荐优先级(high/medium/low)
+  - tokens           # 估计 token 量
+  - updated          # YYYY-MM-DD
+
+# divisions(从 agency-agents 兼容)
+divisions:
+  - academic
+  - design
+  - engineering
+  - finance
+  - game-development
+  - gis
+  - healthcare
+  - marketing
+  - paid-media
+  - product
+  - project-management
+  - sales
+  - security
+  - spatial-computing
+  - specialized
+  - support
+  - testing
+
+# 示例
+example: |
+  ---
+  name: 后端架构师
+  name_en: Backend Architect
+  role_id: backend-architect
+  emoji: 🏗️
+  color: blue
+  vibe: 设计可扩展的后端系统,边界清晰,接口稳定
+  source: agency-agents
+  source_id: engineering/backend-architect
+  divisions: [engineering]
+  domains: [tech, backend]
+  triggers:
+    zh: [后端, API, 架构, 微服务, 数据库]
+    en: [backend, api, architecture, microservice, database]
+  tools: [Read, Grep, Glob, Bash]
+  related: [dba, devops, security]
+  priority: high
+  tokens: ~800
+  updated: 2026-07-05
+  ---
+
+  # 后端架构师
+
+  你是 kallax-experts 的后端架构师角色...

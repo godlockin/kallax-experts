@@ -1,0 +1,148 @@
+# kallax-experts 索引
+#
+# 双源引用:
+# - 跨库引用 eket-experts-extended(70 个)
+# - 跨库引用 agency-agents(280 个)
+# - 本地 5 个示例(占位,可扩展)
+#
+# Token 优化:索引 ~500 tokens,搜索 O(1)
+# vs 完整列表 ~5000 tokens
+
+meta:
+  version: "1.0.0"
+  last_updated: "2026-07-05"
+  total_local: 5
+  total_external: 350  # eket 70 + agency 280
+  search_cmd: "bash tools/search.sh '<keyword>'"
+  arena_cmd: "bash tools/arena.sh '<keyword>'"
+
+# ===== 1. 本地专家(5 个示例) =====
+local:
+  - {id: backend-architect,  file: experts/tech/backend/backend-architect.md,  emoji: "🏗️"}
+  - {id: sre-engineer,       file: experts/tech/devops/sre-engineer.md,        emoji: "🛡️"}
+  - {id: llm-engineer,       file: experts/ai/aiml/llm-engineer.md,            emoji: "🤖"}
+  - {id: legal-advisor,      file: experts/business/legal-advisor.md,         emoji: "⚖️"}
+  - {id: product-manager,    file: experts/design/product-manager.md,        emoji: "🎯"}
+
+# ===== 2. 外部库引用(不复制内容) =====
+external:
+  eket:
+    repo: "https://github.com/godlockin/eket-experts-extended.git"
+    install_path: "~/.claude/experts-extended/eket/experts/"
+    install_cmd: "git clone --depth 1 https://github.com/godlockin/eket-experts-extended.git ~/.claude/experts-extended/eket"
+    count: 70
+    domains: [tech, ai, design, marketing, pr, business, consulting, hr, training, knowledge, ops]
+    search_within_lib: "eket expert:search '<keyword>' --pkg extended"
+  agency-agents:
+    repo: "https://github.com/msitarzewski/agency-agents.git"
+    install_path: "~/.claude/experts-extended/agency-agents/"
+    install_cmd: "git clone --depth 1 https://github.com/msitarzewski/agency-agents.git ~/.claude/experts-extended/agency-agents"
+    count: 280
+    divisions: [academic, design, engineering, finance, game-development, gis, healthcare, marketing, paid-media, product, project-management, sales, security, spatial-computing, specialized, support, testing]
+    search_within_lib: "find ~/.claude/experts-extended/agency-agents -name '*.md' | xargs grep -l '<keyword>'"
+
+# ===== 3. Triggers(关键词 → 专家) =====
+# 设计:
+# - 优先 local
+# - fallback external(标注 source)
+triggers:
+  # ===== 架构/技术 =====
+  架构: [backend-architect, "eket:tech/architect"]
+  架构设计: [backend-architect, "eket:tech/architect"]
+  系统设计: [backend-architect, "eket:tech/architect"]
+  微服务: [backend-architect, "eket:tech/platform"]
+  API: [backend-architect, "agency-agents:engineering/backend-architect"]
+  后端: [backend-architect, "agency-agents:engineering/backend-architect"]
+  数据库: ["eket:tech/dba", "agency-agents:engineering/database-optimizer"]
+  性能: [sre-engineer, "eket:tech/performance"]
+  性能优化: [sre-engineer, "eket:tech/performance"]
+  SRE: [sre-engineer, "eket:tech/sre"]
+  可靠性: [sre-engineer, "eket:tech/sre"]
+  监控: [sre-engineer, "eket:tech/sre"]
+  部署: [sre-engineer, "eket:tech/devops"]
+  容器: ["eket:tech/devops", "eket:tech/platform"]
+  K8s: ["eket:tech/devops", "agency-agents:engineering/devops-automator"]
+  移动: ["eket:tech/mobile", "agency-agents:engineering/ios-developer"]
+  前端: ["agency-agents:engineering/frontend-engineer", "agency-agents:engineering/react-specialist"]
+  QA: ["agency-agents:engineering/qa-engineer", "agency-agents:testing/qa-automation-engineer"]
+  测试: ["agency-agents:testing/qa-automation-engineer"]
+
+  # ===== 安全/合规 =====
+  安全: ["agency-agents:security/security-engineer", "eket:tech/security"]
+  安全审计: ["eket:tech/security", "agency-agents:security/security-auditor"]
+  渗透: ["eket:tech/security"]
+  合规: ["agency-agents:security/grc-analyst", "legal-advisor"]
+
+  # ===== AI/ML =====
+  LLM: [llm-engineer, "agency-agents:engineering/ai-engineer"]
+  RAG: [llm-engineer, "agency-agents:engineering/ai-engineer"]
+  向量库: [llm-engineer, "agency-agents:engineering/vector-database-engineer"]
+  机器学习: [llm-engineer, "agency-agents:engineering/machine-learning-engineer"]
+  prompt: [llm-engineer, "agency-agents:engineering/prompt-engineer"]
+  AI: [llm-engineer, "agency-agents:engineering/ai-engineer"]
+  MLOps: ["agency-agents:engineering/mlops-engineer", "eket:ai/mlops"]
+
+  # ===== 产品/UX/营销 =====
+  产品: [product-manager, "agency-agents:product/product-manager"]
+  UX: [product-manager, "agency-agents:design/ux-researcher"]
+  UI: ["agency-agents:design/ui-designer"]
+  营销: [product-manager, "agency-agents:marketing/marketing-strategist"]
+  增长: [product-manager, "agency-agents:marketing/growth-marketer"]
+  SEO: ["agency-agents:marketing/seo-specialist"]
+  销售: ["agency-agents:sales/sales-representative"]
+  HR: ["agency-agents:hr/recruiter"]
+  招聘: ["agency-agents:hr/recruiter"]
+
+  # ===== 商业/金融/法律 =====
+  商业: [legal-advisor, "agency-agents:strategy/business-strategist"]
+  金融: [legal-advisor, "agency-agents:finance/financial-analyst"]
+  财务: [legal-advisor, "agency-agents:finance/financial-analyst"]
+  法律: [legal-advisor]
+  合规: [legal-advisor, "agency-agents:security/grc-analyst"]
+  合同: [legal-advisor]
+  诉讼: [legal-advisor]
+
+  # ===== 研究/文档/内容 =====
+  研究: [product-manager, "agency-agents:research/researcher"]
+  文档: [product-manager, "agency-agents:research/technical-writer"]
+  调研: [product-manager, "agency-agents:research/researcher"]
+  内容: ["agency-agents:marketing/content-strategist"]
+
+# ===== 4. Division 映射(从 agency 兼容) =====
+divisions:
+  academic: research
+  design: design
+  engineering: tech
+  finance: business
+  game-development: tech
+  gis: tech
+  healthcare: business
+  marketing: marketing
+  paid-media: marketing
+  product: design
+  project-management: business
+  sales: business
+  security: tech
+  spatial-computing: tech
+  specialized: business
+  support: business
+  testing: tech
+
+# ===== 5. eket domain 映射(11 → 标准) =====
+eket_domains:
+  tech: "tech/"
+  ai: "ai/"
+  design: "design/"
+  marketing: "marketing/"
+  pr: "marketing/"  # PR 归 marketing
+  business: "business/"
+  consulting: "business/"
+  hr: "business/"
+  training: "design/"  # training 归 design
+  knowledge: "research/"
+  ops: "tech/"  # ops 归 tech (devops)
+
+# ===== 6. Token 优化 =====
+# 本索引: ~500 tokens
+# 替代 MD 完整列表: ~5000 tokens
+# 节省: 90%
