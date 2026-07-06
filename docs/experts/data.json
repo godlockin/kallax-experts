@@ -1,0 +1,318 @@
+[
+  {
+    "name": "LLM 工程师",
+    "name_en": "LLM Engineer",
+    "role_id": "llm-engineer",
+    "emoji": "🤖",
+    "vibe": "把 LLM 变成生产可用的功能",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "ai",
+      "llm",
+      "rag"
+    ],
+    "triggers_zh": "LLM RAG 向量库 prompt 微调 推理",
+    "triggers_en": "llm rag vector prompt fine-tuning inference",
+    "path": "ai/aiml/llm-engineer.html"
+  },
+  {
+    "name": "数据分析师",
+    "name_en": "Data Analyst",
+    "role_id": "data-analyst",
+    "emoji": "📊",
+    "vibe": "从数据中提取 actionable 洞察",
+    "source": "eket-experts-extended",
+    "priority": "medium",
+    "divisions": [
+      "data",
+      "product"
+    ],
+    "domains": [
+      "data",
+      "analytics",
+      "bi",
+      "metrics"
+    ],
+    "triggers_zh": "数据分析 指标 报表 BI A/B测试 漏斗 留存 DAU 转化率 归因",
+    "triggers_en": "data-analyst metrics bi ab-test funnel retention dau conversion attribution",
+    "path": "ai/data/data-analyst.html"
+  },
+  {
+    "name": "LLM 工程师(高级)",
+    "name_en": "Senior LLM Engineer",
+    "role_id": "llm-engineer-senior",
+    "emoji": "🤖",
+    "vibe": "把 LLM 变成生产可用的功能,且可监控可降级",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "ai",
+      "llm",
+      "rag",
+      "evals",
+      "mLOps"
+    ],
+    "triggers_zh": "LLM 大模型 RAG 检索增强 prompt工程 微调 推理 向量库 embedding agent 智能体 函数调用 function calling",
+    "triggers_en": "llm rag vector embedding prompt-engineering fine-tuning inference agent function-calling evals mcp mLOps",
+    "path": "ai/llm/llm-engineer.html"
+  },
+  {
+    "name": "财务分析师",
+    "name_en": "Finance Analyst",
+    "role_id": "finance-analyst",
+    "emoji": "💰",
+    "vibe": "让数字说话,让每笔支出都有 ROI",
+    "source": "agency-agents",
+    "priority": "medium",
+    "divisions": [
+      "finance"
+    ],
+    "domains": [
+      "finance",
+      "accounting",
+      "fp&a",
+      "metrics"
+    ],
+    "triggers_zh": "财务 收入 成本 利润 现金流 预算 单位经济 财务模型 报表 ROI 毛利率 净利率",
+    "triggers_en": "finance revenue cost profit cash-flow budget unit-economics fp&a financial-model roi margin",
+    "path": "business/finance/finance-analyst.html"
+  },
+  {
+    "name": "法务合规",
+    "name_en": "Legal & Compliance",
+    "role_id": "legal-compliance",
+    "emoji": "📜",
+    "vibe": "让公司在法律框架内安全运营",
+    "source": "agency-agents",
+    "priority": "medium",
+    "divisions": [
+      "security",
+      "finance",
+      "specialized"
+    ],
+    "domains": [
+      "legal",
+      "compliance",
+      "grc",
+      "contract"
+    ],
+    "triggers_zh": "合规 法规 合同 隐私 GDPR 数据保护 反腐 知识产权 劳动法 竞业限制 跨境数据",
+    "triggers_en": "compliance regulation contract privacy gdpr data-protection anti-corruption ip labor-law non-compete cross-border",
+    "path": "business/legal/legal-compliance.html"
+  },
+  {
+    "name": "法律顾问",
+    "name_en": "Legal Advisor",
+    "role_id": "legal-advisor",
+    "emoji": "⚖️",
+    "vibe": "让公司在法律框架内安全运营",
+    "source": "eket-experts-extended",
+    "priority": "medium",
+    "divisions": [
+      "specialized"
+    ],
+    "domains": [
+      "legal",
+      "compliance",
+      "contract"
+    ],
+    "triggers_zh": "法律 合同 合规 诉讼 知识产权 隐私",
+    "triggers_en": "legal contract compliance lawsuit ip privacy",
+    "path": "business/legal-advisor.html"
+  },
+  {
+    "name": "产品经理",
+    "name_en": "Product Manager",
+    "role_id": "product-manager",
+    "emoji": "🎯",
+    "vibe": "让用户爱上产品",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "product"
+    ],
+    "domains": [
+      "product",
+      "ux",
+      "research"
+    ],
+    "triggers_zh": "产品 用户 需求 路线图 MVP 增长",
+    "triggers_en": "product user requirement roadmap mvp growth",
+    "path": "design/product-manager.html"
+  },
+  {
+    "name": "UX 研究员",
+    "name_en": "UX Researcher",
+    "role_id": "ux-researcher",
+    "emoji": "🔍",
+    "vibe": "让真实用户的声音驱动产品决策",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "design",
+      "product"
+    ],
+    "domains": [
+      "ux",
+      "research",
+      "user-research",
+      "usability"
+    ],
+    "triggers_zh": "UX 用户研究 用研 可用性 用户访谈 问卷 焦点小组 用户画像 persona 用户旅程 journey 痛点",
+    "triggers_en": "ux user-research usability interview survey focus-group persona user-journey pain-point",
+    "path": "design/ux-research/ux-researcher.html"
+  },
+  {
+    "name": "后端架构师",
+    "name_en": "Backend Architect",
+    "role_id": "backend-architect",
+    "emoji": "🏗️",
+    "vibe": "设计可扩展的后端系统,边界清晰,接口稳定",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "backend"
+    ],
+    "triggers_zh": "后端 API 架构 微服务 数据库 性能",
+    "triggers_en": "backend api architecture microservice database performance",
+    "path": "tech/backend/backend-architect.html"
+  },
+  {
+    "name": "DevOps 工程师",
+    "name_en": "DevOps Engineer",
+    "role_id": "devops-engineer",
+    "emoji": "⚙️",
+    "vibe": "让代码从 commit 到生产全自动化",
+    "source": "eket-experts-extended",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "devops",
+      "ci-cd",
+      "platform"
+    ],
+    "triggers_zh": "DevOps CI CD 持续集成 持续部署 GitHub Actions Jenkins GitLab CI ArgoCD Helm K8s部署",
+    "triggers_en": "devops ci cd pipeline github-actions jenkins gitlab-ci argocd helm k8s-deploy",
+    "path": "tech/devops/devops-engineer.html"
+  },
+  {
+    "name": "SRE 工程师",
+    "name_en": "SRE Engineer",
+    "role_id": "sre-engineer",
+    "emoji": "🛡️",
+    "vibe": "让系统 99.99% 可用,故障秒级响应",
+    "source": "eket-experts-extended",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "devops",
+      "reliability"
+    ],
+    "triggers_zh": "SRE 故障 监控 告警 SLA 部署 可靠性",
+    "triggers_en": "sre incident monitoring alert sla deployment reliability",
+    "path": "tech/devops/sre-engineer.html"
+  },
+  {
+    "name": "移动工程师",
+    "name_en": "Mobile Engineer",
+    "role_id": "mobile-engineer",
+    "emoji": "📱",
+    "vibe": "让 60 FPS 的体验在每一台设备上",
+    "source": "agency-agents",
+    "priority": "medium",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "mobile",
+      "ios",
+      "android",
+      "react-native",
+      "flutter"
+    ],
+    "triggers_zh": "移动 iOS Android Swift Kotlin React Native Flutter 跨端 App Store Play Store ANR 启动性能 内存",
+    "triggers_en": "mobile ios android swift kotlin react-native flutter cross-platform app-store play-store anr startup memory",
+    "path": "tech/mobile/mobile-engineer.html"
+  },
+  {
+    "name": "性能工程师",
+    "name_en": "Performance Engineer",
+    "role_id": "performance-engineer",
+    "emoji": "⚡",
+    "vibe": "让毫秒级的优化成为常态",
+    "source": "agency-agents",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "performance",
+      "observability",
+      "optimization"
+    ],
+    "triggers_zh": "性能 性能优化 慢查询 缓存 预加载 渲染优化 打点 监控指标 p99 响应时间",
+    "triggers_en": "performance optimization slow-query cache preload render metrics p99 latency throughput profiling",
+    "path": "tech/performance/performance-engineer.html"
+  },
+  {
+    "name": "QA 工程师",
+    "name_en": "QA Engineer",
+    "role_id": "qa-engineer",
+    "emoji": "🧪",
+    "vibe": "让 bug 在生产前被全部捕获",
+    "source": "eket-experts-extended",
+    "priority": "medium",
+    "divisions": [
+      "testing",
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "qa",
+      "testing",
+      "automation"
+    ],
+    "triggers_zh": "QA 测试 单元测试 集成测试 E2E 端到端 测试覆盖率 性能测试 回归测试 测试金字塔",
+    "triggers_en": "qa testing unit-test integration e2e coverage performance-test regression test-pyramid",
+    "path": "tech/qa/qa-engineer.html"
+  },
+  {
+    "name": "安全工程师",
+    "name_en": "Security Engineer",
+    "role_id": "security-engineer",
+    "emoji": "🔒",
+    "vibe": "让系统在攻击者面前毫无破绽",
+    "source": "eket-experts-extended",
+    "priority": "high",
+    "divisions": [
+      "engineering"
+    ],
+    "domains": [
+      "tech",
+      "security",
+      "audit"
+    ],
+    "triggers_zh": "安全 渗透 漏洞 加密 认证 鉴权 XSS CSRF SQL注入 密钥管理 威胁建模",
+    "triggers_en": "security pentest vulnerability encryption auth xss csrf sqli secret threat-model",
+    "path": "tech/security/security-engineer.html"
+  }
+]
