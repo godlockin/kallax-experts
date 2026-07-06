@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCHITECTURE / 融合架构 | kallax-experts</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    max-width: 900px; margin: 2em auto; padding: 0 1em;
+    color: #1a1a1a; background: #fafafa; line-height: 1.6;
+  }
+  h1, h2, h3 { color: #1a1a1a; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; margin-top: 1.5em; }
+  h3 { font-size: 1.2em; margin-top: 1.2em; border-bottom: none; }
+  pre { background: #f5f5f5; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-family: monospace; }
+  pre code { background: transparent; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  td, th { border: 1px solid #ddd; padding: 0.5em; }
+  th { background: #f0f0f0; }
+  a { color: #0066cc; }
+  p { margin: 1em 0; }
+  .back { background: #fff; padding: 1em; border-radius: 6px; margin-bottom: 2em; border: 1px solid #eee; }
+</style>
+</head>
+<body>
+<a href="index.html" class="back">← 返回 kallax-experts 首页</a>
+<h1>ARCHITECTURE / 融合架构</h1>
+
+<p>> <strong>kallax-experts</strong> = eket-experts-extended ∪ agency-agents ∪ kallax-extension
+> <strong>目标</strong>:对外独立、可组合、可自动选的专家组项目</p>
+
+<h2>🎯 融合理念</h2>
+
+<table>
+<tr><td>来源</td><td>强项</td><td>我们如何继承</td></tr>
+<tr><td><a href="https://github.com/godlockin/eket-experts-extended">eket-experts-extended</a></td><td>YAML 倒排索引 + CLI 搜索 + 触发器</td><td><strong>继承 INDEX.yml 倒排索引</strong> + <strong>CLI 工具(search.sh/arena.sh)</strong></td></tr>
+<tr><td><a href="https://github.com/msitarzewski/agency-agents">agency-agents</a></td><td>frontmatter metadata + 17 division 分类</td><td><strong>继承 frontmatter schema</strong> + <strong>division 标准化</strong></td></tr>
+<tr><td><a href="https://github.com/godlockin/kallax">kallax</a></td><td>default 5 + 统一触发(slash command)</td><td><strong>本地 5 个示例</strong> + <strong>跨库引用触发</strong></td></tr>
+</table>
+
+<strong>关键设计决策</strong>:
+1. <strong>不复制专家内容</strong> — eket/agency 各自维护,kallax-experts 只维护<strong>统一索引 + frontmatter 标准 + 跨库引用</strong>
+2. <strong>frontmatter 标准化</strong> — 所有 expert 必须符合 schema(tools/validate.sh 验证)
+3. <strong>YAML 倒排索引</strong> — 关键词 → 专家(中英文双支持)
+4. <strong>跨库引用</strong> — 触发关键词可同时命中 builtin + eket + agency
+5. <strong>CLI 工具</strong> — search.sh / arena.sh(沿用 eket 风格)
+
+<p>---</p>
+
+<h2>🏗️ 4 层架构</h2>
+
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+│  Layer 4: Triggers(slash command 集成)           │
+│  /kallax init/research/ask                       │
+│  → 大模型自动选专家(用 INDEX.yml)               │
+└─────────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────────┐
+│  Layer 3: 索引(YAML 倒排)                        │
+│  INDEX.yml(500 tokens)                            │
+│  - triggers: 关键词 → 专家                      │
+│  - external: 跨库引用                          │
+│  - divisions: 标准化分类                        │
+└─────────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────────┐
+│  Layer 2: 外部库(不复制)                          │
+│  ~/.claude/experts-extended/                     │
+│  ├── eket/             (70 个,git clone)         │
+│  ├── agency-agents/    (280 个,git clone)        │
+│  └── (其他自定义)                                   │
+└─────────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────────┐
+│  Layer 1: 本地专家(5 个示例)                      │
+│  experts/                                       │
+│  ├── tech/backend/backend-architect.md         │
+│  ├── tech/devops/sre-engineer.md               │
+│  ├── ai/aiml/llm-engineer.md                    │
+│  ├── business/legal-advisor.md                  │
+│  └── design/product-manager.md                  │
+└─────────────────────────────────────────────────┘
+</code></pre>
+
+<p>---</p>
+
+<h2>📋 文件清单</h2>
+
+<pre><code class="language-">kallax-experts/
+├── README.md              (项目说明)
+├── LICENSE                (MIT)
+├── INDEX.yml              (机器可读倒排索引,~500 tokens)
+├── INDEX.md               (人类可读索引)
+├── experts/               (5 个示例)
+│   ├── tech/
+│   │   ├── backend/backend-architect.md
+│   │   └── devops/sre-engineer.md
+│   ├── ai/aiml/llm-engineer.md
+│   ├── design/product-manager.md
+│   └── business/legal-advisor.md
+├── schema/
+│   └── frontmatter.yml    (frontmatter 标准)
+├── tools/
+│   ├── search.sh          (关键词搜索)
+│   ├── arena.sh           (竞技场)
+│   └── validate.sh        (frontmatter 验证)
+├── docs/
+│   ├── ARCHITECTURE.md    (本文件)
+│   └── CONTRIBUTING.md
+└── .github/workflows/
+    └── validate.yml       (CI)
+</code></pre>
+
+<p>---</p>
+
+<h2>🔍 工作流示例</h2>
+
+<h3>用户:"帮我审查 API 安全"</h3>
+
+<pre><code class="language-bash"><h1>1. 搜索关键词</h1>
+bash tools/search.sh "API"
+<h1>命中:</h1>
+<h1>  - local: backend-architect(本地详细)</h1>
+<h1>  - eket: tech/security</h1>
+<h1>  - agency-agents: engineering/backend-architect</h1>
+
+<h1>2. 竞技场对比</h1>
+bash tools/arena.sh "API"
+<h1>Top 3 候选 + 匹配度评分</h1>
+
+<h1>3. Claude Code 加载</h1>
+Read experts/tech/backend/backend-architect.md  # 本地详细
+Read ~/.claude/experts-extended/eket/experts/tech/security.md  # 外部详细
+</code></pre>
+
+<h3>用户:"/kallax 启动一个 React 项目"</h3>
+
+<pre><code class="language-bash"><h1>1. 大模型读 INDEX.yml(500 tokens)</h1>
+Read INDEX.yml
+
+<h1>2. 命中 frontend-engineer(从 agency) + UX 研究员</h1>
+<h1>3. Read 详细 prompt</h1>
+Read ~/.claude/experts-extended/agency-agents/engineering/frontend-engineer.md
+</code></pre>
+
+<p>---</p>
+
+<h2>⚖️ vs 单独使用 eket/agency</h2>
+
+<table>
+<tr><td>维度</td><td>eket-only</td><td>agency-only</td><td><strong>kallax-experts</strong></td></tr>
+<tr><td>专家数量</td><td>70</td><td>280</td><td><strong>350</strong>(去重)</td></tr>
+<tr><td>索引</td><td>YAML 倒排</td><td>divisions.json</td><td><strong>YAML 倒排 + 跨库引用</strong></td></tr>
+<tr><td>CLI 工具</td><td>有</td><td>无</td><td><strong>有(从 eket 学)</strong></td></tr>
+<tr><td>frontmatter</td><td>部分</td><td>完整</td><td><strong>标准化 + 验证</strong></td></tr>
+<tr><td>跨库</td><td>否</td><td>否</td><td><strong>是</strong></td></tr>
+<tr><td>Token 优化</td><td>索引 1200 tokens</td><td>无索引</td><td><strong>索引 500 tokens</strong></td></tr>
+</table>
+
+<p>---</p>
+
+<h2>🚀 路线图</h2>
+
+<p>- [ ] 完整倒排索引(从 eket + agency 提取所有 triggers)
+- [ ] expert-compose:多专家合成(多视角分析)
+- [ ] GitHub Pages(可搜索目录)
+- [ ] vscode 扩展(可选)
+- [ ] 行业垂直专家(医疗 / 法律 / 金融 等)</p>
+
+<p>---</p>
+
+<strong>Maintained by</strong>:kallax framework
+<strong>Last updated</strong>:2026-07-05
+<strong>License</strong>:MIT
+<hr>
+<p class="back">
+  <a href="https://github.com/godlockin/kallax-experts/blob/main/docs/ARCHITECTURE.md">📝 在 GitHub 上编辑此页</a>
+  · <a href="https://github.com/godlockin/kallax-experts">kallax-experts</a>
+</p>
+</body>
+</html>
