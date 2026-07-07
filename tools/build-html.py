@@ -105,7 +105,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<a href="index.html" class="back">← 返回 kallax-experts 首页</a>
+<a href="https://godlockin.github.io/kallax-experts/" class="back">← 返回 kallax-experts 首页</a>
 {content}
 <hr>
 <p class="back">

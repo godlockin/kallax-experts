@@ -196,8 +196,8 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<a href="../index.html" class="back">← 返回 Experts 列表</a> |
-<a href="../../index.html" class="back">🏠 回到 kallax-experts 首页</a>
+<a href="https://godlockin.github.io/kallax-experts/experts/" class="back">← 返回 Experts 列表</a> |
+<a href="https://godlockin.github.io/kallax-experts/" class="back">🏠 回到 kallax-experts 首页</a>
 
 <h1>{emoji} {name} <code style="font-size: 0.6em;">{role_id}</code></h1>
 <p><em>{vibe}</em></p>
@@ -264,7 +264,7 @@ LIST_TEMPLATE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<a href="../index.html" class="back">← 回到 kallax-experts 首页</a>
+<a href="https://godlockin.github.io/kallax-experts/experts/" class="back">← 回到 kallax-experts 首页</a>
 
 <h1>🎭 Experts 列表 / Browse</h1>
 <p>共 <strong id="total-count">0</strong> 个 expert(本地 15 个,加上跨库引用 350+ 个)。</p>

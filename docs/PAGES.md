@@ -22,15 +22,15 @@
 仓库(branch miao)                    →  部署 URL
 ─────────────────────────────────────────────────
 index.html                          →  /
-docs/README.html                    →  /README.html
-docs/USAGE.html                     →  /USAGE.html
-docs/ARCHITECTURE.html              →  /ARCHITECTURE.html
-docs/CONTRIBUTING.html              →  /CONTRIBUTING.html
-docs/INDEX.html                     →  /INDEX.html
-docs/experts/index.html             →  /experts/index.html
-docs/experts/data.json               →  /experts/data.json
-docs/experts/ai/aiml/llm-engineer.html →  /experts/ai/aiml/llm-engineer.html
-... (15 expert .html)              →  /experts/<category>/<name>.html
+docs/README.html                    →  README.html
+docs/USAGE.html                     →  USAGE.html
+docs/ARCHITECTURE.html              →  ARCHITECTURE.html
+docs/CONTRIBUTING.html              →  CONTRIBUTING.html
+docs/INDEX.html                     →  INDEX.html
+docs/experts/index.html             →  experts/index.html
+docs/experts/data.json               →  experts/data.json
+docs/experts/ai/aiml/llm-engineer.html →  experts/ai/aiml/llm-engineer.html
+... (15 expert .html)              →  experts/<category>/<name>.html
 ```
 
 **根 `index.html` 在仓库根**(作为站点首页),**不是** `docs/index.html`。
