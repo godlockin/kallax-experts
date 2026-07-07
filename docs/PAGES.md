@@ -146,4 +146,4 @@ done
 - `tools/validate.sh` — frontmatter 验证
 - `.github/workflows/build.yml` — CI 自动 build
 - `.github/workflows/validate.yml` — frontmatter 验证 CI
-- `.github/workflows/pages.yml` —(已删除,GitHub 自动 pages-build-deployment 接管)
+- `.github/workflows/pages.yml` —(已删除,GitHub 自动 pages-build-deployment 接管)<!-- 触发新 build: Tue Jul  7 16:28:29 CST 2026 -->
