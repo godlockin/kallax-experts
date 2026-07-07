@@ -140,9 +140,16 @@ def main():
             md_path=f"docs/{md_file.name}"
         )
 
-        html_file = md_file.with_suffix(".html")
+        html_file = docs_dir / (md_file.stem + ".html")
+        # macOS APFS case-insensitive:INDEX.html 跟 index.html 共享 inode
+        # 解法:INDEX.md 直接产出 index.html(不是 INDEX.html)
+        # 这样 docs/index.html 作为 GitHub Pages 入口,无需复制
+        if md_file.stem.upper() == "INDEX":
+            html_file = docs_dir / "index.html"
+        if html_file.exists():
+            html_file.unlink()
         html_file.write_text(html, encoding="utf-8")
-        print(f"  {md_file.name} → {html_file.name}")
+        print(f"  {md_file.name} → {html_file.name} (inode={html_file.stat().st_ino})")
         converted += 1
 
     print(f"\n✅ Converted {converted} .md → .html")

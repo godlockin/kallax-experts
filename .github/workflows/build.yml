@@ -37,6 +37,16 @@ jobs:
       - name: Run build-html.py
         run: python3 tools/build-html.py
 
+      - name: Copy INDEX.html to index.html
+        run: |
+          # GitHub Pages path=/docs 默认入口是 docs/index.html
+          # 但我们的 INDEX 是 docs/INDEX.html
+          # 复制一份作为 docs/index.html(GitHub Pages 入口)
+          if [[ -f docs/INDEX.html ]]; then
+            cp docs/INDEX.html docs/index.html
+            echo "✅ docs/index.html = docs/INDEX.html"
+          fi
+
       - name: Run build-experts.py
         run: python3 tools/build-experts.py
 

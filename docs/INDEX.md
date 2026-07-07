@@ -1,7 +1,7 @@
 # Expert 索引 / Index
 
 > 本仓库 15 个本地 expert(融合 eket + agency)。
-> 完整列表(带搜索)见 [/experts/](/experts/)。
+> 完整列表(带搜索)见 [https://godlockin.github.io/kallax-experts/experts/](https://godlockin.github.io/kallax-experts/experts/)。
 
 ## 全部 15 个 expert
 

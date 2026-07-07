@@ -51,15 +51,15 @@
 <pre><code class="language-">仓库(branch miao)                    →  部署 URL
 ─────────────────────────────────────────────────
 index.html                          →  /
-docs/README.html                    →  /README.html
-docs/USAGE.html                     →  /USAGE.html
-docs/ARCHITECTURE.html              →  /ARCHITECTURE.html
-docs/CONTRIBUTING.html              →  /CONTRIBUTING.html
-docs/INDEX.html                     →  /INDEX.html
-docs/experts/index.html             →  /experts/index.html
-docs/experts/data.json               →  /experts/data.json
-docs/experts/ai/aiml/llm-engineer.html →  /experts/ai/aiml/llm-engineer.html
-... (15 expert .html)              →  /experts/<category>/<name>.html
+docs/README.html                    →  README.html
+docs/USAGE.html                     →  USAGE.html
+docs/ARCHITECTURE.html              →  ARCHITECTURE.html
+docs/CONTRIBUTING.html              →  CONTRIBUTING.html
+docs/INDEX.html                     →  INDEX.html
+docs/experts/index.html             →  experts/index.html
+docs/experts/data.json               →  experts/data.json
+docs/experts/ai/aiml/llm-engineer.html →  experts/ai/aiml/llm-engineer.html
+... (15 expert .html)              →  experts/<category>/<name>.html
 </code></pre>
 
 <strong>根 <code>index.html</code> 在仓库根</strong>(作为站点首页),<strong>不是</strong> <code>docs/index.html</code>。
@@ -172,7 +172,8 @@ done
 - <code>tools/validate.sh</code> — frontmatter 验证
 - <code>.github/workflows/build.yml</code> — CI 自动 build
 - <code>.github/workflows/validate.yml</code> — frontmatter 验证 CI
-- <code>.github/workflows/pages.yml</code> —(已删除,GitHub 自动 pages-build-deployment 接管)</p>
+- <code>.github/workflows/pages.yml</code> —(已删除,GitHub 自动 pages-build-deployment 接管)<!-- 触发新 build: Tue Jul  7 16:28:29 CST 2026 -->
+</p>
 <hr>
 <p class="back">
   <a href="https://github.com/godlockin/kallax-experts/blob/main/docs/PAGES.md">📝 在 GitHub 上编辑此页</a>
