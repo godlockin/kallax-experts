@@ -51,7 +51,7 @@ jobs:
           find docs -name "*.html" -type f | wc -l
           echo ""
           echo "=== 关键文件存在? ==="
-          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
+          for f in index.html docs/INDEX.html docs/experts/index.html docs/experts/data.json; do
             if [[ -f "$f" ]]; then
               size=$(stat -c %s "$f")
               echo "  ✅ $f ($size bytes)"
@@ -78,7 +78,7 @@ jobs:
           git status --short
           echo ""
           echo "=== 关键文件 hash ==="
-          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
+          for f in index.html docs/INDEX.html docs/experts/index.html docs/experts/data.json; do
             if [[ -f "$f" ]]; then
               hash=$(sha256sum "$f" | cut -c1-12)
               size=$(stat -c %s "$f")
