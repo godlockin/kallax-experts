@@ -37,14 +37,15 @@ jobs:
       - name: Run build-html.py
         run: python3 tools/build-html.py
 
-      - name: Copy INDEX.html to index.html
+      - name: Verify docs/index.html exists (INDEX.md → index.html)
         run: |
-          # GitHub Pages path=/docs 默认入口是 docs/index.html
-          # 但我们的 INDEX 是 docs/INDEX.html
-          # 复制一份作为 docs/index.html(GitHub Pages 入口)
-          if [[ -f docs/INDEX.html ]]; then
-            cp docs/INDEX.html docs/index.html
-            echo "✅ docs/index.html = docs/INDEX.html"
+          # build-html.py INDEX.md → docs/index.html(直接产出,macOS case-insensitive inode 唯一)
+          if [[ -f docs/index.html ]]; then
+            size=$(stat -c %s docs/index.html)
+            echo "✅ docs/index.html ($size bytes)"
+          else
+            echo "❌ docs/index.html NOT FOUND"
+            exit 1
           fi
 
       - name: Run build-experts.py
@@ -61,7 +62,7 @@ jobs:
           find docs -name "*.html" -type f | wc -l
           echo ""
           echo "=== 关键文件存在? ==="
-          for f in index.html docs/INDEX.html docs/experts/index.html docs/experts/data.json; do
+          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
             if [[ -f "$f" ]]; then
               size=$(stat -c %s "$f")
               echo "  ✅ $f ($size bytes)"
@@ -71,7 +72,8 @@ jobs:
             fi
           done
           # docs/README.html 是 build-html.py 生成的(README 在 docs/ 目录)
-          for f in docs/README.html docs/USAGE.html docs/ARCHITECTURE.html docs/CONTRIBUTING.html docs/PAGES.html docs/INDEX.html; do
+          # INDEX.md → docs/index.html (Pages 入口,小写,macOS case-insensitive inode 唯一)
+          for f in docs/README.html docs/USAGE.html docs/ARCHITECTURE.html docs/CONTRIBUTING.html docs/PAGES.html docs/index.html; do
             if [[ -f "$f" ]]; then
               size=$(stat -c %s "$f")
               echo "  ✅ $f ($size bytes)"
@@ -88,7 +90,7 @@ jobs:
           git status --short
           echo ""
           echo "=== 关键文件 hash ==="
-          for f in index.html docs/INDEX.html docs/experts/index.html docs/experts/data.json; do
+          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
             if [[ -f "$f" ]]; then
               hash=$(sha256sum "$f" | cut -c1-12)
               size=$(stat -c %s "$f")
