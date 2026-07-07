@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: QA 工程师
 name_en: QA Engineer
 role_id: qa-engineer
@@ -11,8 +15,24 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [testing, engineering]
 domains: [tech, qa, testing, automation]
 triggers:
+
   zh: [QA, 测试, 单元测试, 集成测试, E2E, 端到端, 测试覆盖率, 性能测试, 回归测试, 测试金字塔]
   en: [qa, testing, unit-test, integration, e2e, coverage, performance-test, regression, test-pyramid]
+
+use_when_zh:
+  - 测试覆盖率
+  - 回归测试
+  - 自动化测试
+  - 单元测试要不要写
+  - 测试策略
+  - bug 太多
+use_when_en:
+  - test coverage
+  - regression suite
+  - automation framework
+  - unit vs integration
+  - QA strategy
+
 tools: [Read, Grep, Glob, Bash]
 related: [backend-architect, frontend-engineer, devops-engineer]
 priority: medium

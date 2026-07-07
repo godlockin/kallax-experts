@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 法务合规
 name_en: Legal & Compliance
 role_id: legal-compliance
@@ -11,8 +15,24 @@ source_attribution: 借鉴 + 优化 + 修改(2 源合并)
 divisions: [security, finance, specialized]
 domains: [legal, compliance, grc, contract]
 triggers:
+
   zh: [合规, 法规, 合同, 隐私, GDPR, 数据保护, 反腐, 知识产权, 劳动法, 竞业限制, 跨境数据]
   en: [compliance, regulation, contract, privacy, gdpr, data-protection, anti-corruption, ip, labor-law, non-compete, cross-border]
+
+use_when_zh:
+  - GDPR 合规
+  - 数据合规
+  - 等保测评
+  - 用户隐私
+  - cookie 政策
+  - 数据出境
+use_when_en:
+  - GDPR compliance
+  - data privacy
+  - PIPL
+  - cookie policy
+  - data residency
+
 tools: [Read, Grep, WebFetch]
 related: [security-engineer, finance-analyst, hr-specialist]
 priority: medium

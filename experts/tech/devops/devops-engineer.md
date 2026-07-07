@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: DevOps 工程师
 name_en: DevOps Engineer
 role_id: devops-engineer
@@ -11,8 +15,24 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [engineering]
 domains: [tech, devops, ci-cd, platform]
 triggers:
+
   zh: [DevOps, CI, CD, 持续集成, 持续部署, GitHub Actions, Jenkins, GitLab CI, ArgoCD, Helm, K8s部署]
   en: [devops, ci, cd, pipeline, github-actions, jenkins, gitlab-ci, argocd, helm, k8s-deploy]
+
+use_when_zh:
+  - CI/CD 怎么搭
+  - k8s 部署
+  - Docker 镜像
+  - Jenkinsfile 怎么写
+  - 流水线太慢
+  - 发布流程
+use_when_en:
+  - CI/CD pipeline
+  - k8s deployment
+  - docker build
+  - jenkins pipeline
+  - deploy automation
+
 tools: [Read, Grep, Glob, Bash]
 related: [sre-engineer, platform-engineer, security-engineer]
 priority: high

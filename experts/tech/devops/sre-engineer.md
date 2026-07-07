@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: SRE 工程师
 name_en: SRE Engineer
 role_id: sre-engineer
@@ -10,8 +14,26 @@ source_id: tech/sre
 divisions: [engineering]
 domains: [tech, devops, reliability]
 triggers:
+
   zh: [SRE, 故障, 监控, 告警, SLA, 部署, 可靠性]
   en: [sre, incident, monitoring, alert, sla, deployment, reliability]
+
+use_when_zh:
+  - 服务挂了
+  - 线上报警
+  - SLO 怎么定
+  - 故障复盘
+  - 值班 oncall
+  - 可用性 99.9 还是 99.99
+  - 事故响应
+use_when_en:
+  - production outage
+  - oncall
+  - SLO definition
+  - postmortem
+  - incident response
+  - availability target
+
 tools: [Read, Grep, Bash]
 related: [devops, security, backend]
 priority: high

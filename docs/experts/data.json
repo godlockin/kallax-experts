@@ -17,6 +17,23 @@
     ],
     "triggers_zh": "LLM RAG 向量库 prompt 微调 推理",
     "triggers_en": "llm rag vector prompt fine-tuning inference",
+    "use_when_zh": [
+      "RAG 怎么做",
+      "知识库问答",
+      "向量数据库",
+      "agent 编排",
+      "LangChain",
+      "embedding 选型",
+      "function calling"
+    ],
+    "use_when_en": [
+      "RAG pipeline",
+      "vector DB",
+      "agent orchestration",
+      "LangChain",
+      "embeddings",
+      "function calling"
+    ],
     "path": "ai/aiml/llm-engineer.html"
   },
   {
@@ -39,6 +56,22 @@
     ],
     "triggers_zh": "数据分析 指标 报表 BI A/B测试 漏斗 留存 DAU 转化率 归因",
     "triggers_en": "data-analyst metrics bi ab-test funnel retention dau conversion attribution",
+    "use_when_zh": [
+      "数据报表",
+      "用户留存",
+      "埋点设计",
+      "SQL 怎么写",
+      "业务指标定义",
+      "DAU MAU",
+      "转化漏斗"
+    ],
+    "use_when_en": [
+      "retention analysis",
+      "funnel metrics",
+      "SQL query",
+      "KPI definition",
+      "A/B test analysis"
+    ],
     "path": "ai/data/data-analyst.html"
   },
   {
@@ -61,6 +94,22 @@
     ],
     "triggers_zh": "LLM 大模型 RAG 检索增强 prompt工程 微调 推理 向量库 embedding agent 智能体 函数调用 function calling",
     "triggers_en": "llm rag vector embedding prompt-engineering fine-tuning inference agent function-calling evals mcp mLOps",
+    "use_when_zh": [
+      "大模型选哪个",
+      "prompt 怎么写",
+      "GPT 调用",
+      "API key 管理",
+      "成本太高",
+      "输出不准",
+      "幻觉问题"
+    ],
+    "use_when_en": [
+      "LLM selection",
+      "prompt engineering",
+      "GPT-4 vs Claude",
+      "hallucination",
+      "cost optimization"
+    ],
     "path": "ai/llm/llm-engineer.html"
   },
   {
@@ -82,6 +131,21 @@
     ],
     "triggers_zh": "财务 收入 成本 利润 现金流 预算 单位经济 财务模型 报表 ROI 毛利率 净利率",
     "triggers_en": "finance revenue cost profit cash-flow budget unit-economics fp&a financial-model roi margin",
+    "use_when_zh": [
+      "财务报表",
+      "成本分析",
+      "预算规划",
+      "ROI 计算",
+      "融资估值",
+      "现金流"
+    ],
+    "use_when_en": [
+      "financial modeling",
+      "cost analysis",
+      "budget planning",
+      "ROI calculation",
+      "valuation"
+    ],
     "path": "business/finance/finance-analyst.html"
   },
   {
@@ -105,6 +169,21 @@
     ],
     "triggers_zh": "合规 法规 合同 隐私 GDPR 数据保护 反腐 知识产权 劳动法 竞业限制 跨境数据",
     "triggers_en": "compliance regulation contract privacy gdpr data-protection anti-corruption ip labor-law non-compete cross-border",
+    "use_when_zh": [
+      "GDPR 合规",
+      "数据合规",
+      "等保测评",
+      "用户隐私",
+      "cookie 政策",
+      "数据出境"
+    ],
+    "use_when_en": [
+      "GDPR compliance",
+      "data privacy",
+      "PIPL",
+      "cookie policy",
+      "data residency"
+    ],
     "path": "business/legal/legal-compliance.html"
   },
   {
@@ -125,6 +204,21 @@
     ],
     "triggers_zh": "法律 合同 合规 诉讼 知识产权 隐私",
     "triggers_en": "legal contract compliance lawsuit ip privacy",
+    "use_when_zh": [
+      "合同怎么审",
+      "NDA 协议",
+      "合规风险",
+      "法律咨询",
+      "知识产权",
+      "仲裁诉讼"
+    ],
+    "use_when_en": [
+      "contract review",
+      "NDA agreement",
+      "compliance risk",
+      "IP protection",
+      "litigation"
+    ],
     "path": "business/legal-advisor.html"
   },
   {
@@ -145,6 +239,22 @@
     ],
     "triggers_zh": "产品 用户 需求 路线图 MVP 增长",
     "triggers_en": "product user requirement roadmap mvp growth",
+    "use_when_zh": [
+      "产品规划",
+      "需求优先级",
+      "MVP 怎么定",
+      "竞品分析",
+      "路线图",
+      "用户故事",
+      "老板说要加个功能"
+    ],
+    "use_when_en": [
+      "product roadmap",
+      "feature prioritization",
+      "MVP definition",
+      "competitive analysis",
+      "user story"
+    ],
     "path": "design/product-manager.html"
   },
   {
@@ -167,6 +277,21 @@
     ],
     "triggers_zh": "UX 用户研究 用研 可用性 用户访谈 问卷 焦点小组 用户画像 persona 用户旅程 journey 痛点",
     "triggers_en": "ux user-research usability interview survey focus-group persona user-journey pain-point",
+    "use_when_zh": [
+      "用户调研",
+      "可用性测试",
+      "用户画像",
+      "需求挖掘",
+      "用户体验差",
+      "按钮放哪里"
+    ],
+    "use_when_en": [
+      "user research",
+      "usability testing",
+      "persona",
+      "user journey",
+      "UX audit"
+    ],
     "path": "design/ux-research/ux-researcher.html"
   },
   {
@@ -186,6 +311,23 @@
     ],
     "triggers_zh": "后端 API 架构 微服务 数据库 性能",
     "triggers_en": "backend api architecture microservice database performance",
+    "use_when_zh": [
+      "接口设计",
+      "数据库表结构",
+      "微服务拆分",
+      "服务调用链",
+      "API 选型 REST 还是 GraphQL",
+      "新功能从 0 设计",
+      "重构老系统"
+    ],
+    "use_when_en": [
+      "API design",
+      "schema design",
+      "microservice split",
+      "service mesh",
+      "monolith to microservices",
+      "greenfield backend"
+    ],
     "path": "tech/backend/backend-architect.html"
   },
   {
@@ -207,6 +349,21 @@
     ],
     "triggers_zh": "DevOps CI CD 持续集成 持续部署 GitHub Actions Jenkins GitLab CI ArgoCD Helm K8s部署",
     "triggers_en": "devops ci cd pipeline github-actions jenkins gitlab-ci argocd helm k8s-deploy",
+    "use_when_zh": [
+      "CI/CD 怎么搭",
+      "k8s 部署",
+      "Docker 镜像",
+      "Jenkinsfile 怎么写",
+      "流水线太慢",
+      "发布流程"
+    ],
+    "use_when_en": [
+      "CI/CD pipeline",
+      "k8s deployment",
+      "docker build",
+      "jenkins pipeline",
+      "deploy automation"
+    ],
     "path": "tech/devops/devops-engineer.html"
   },
   {
@@ -227,6 +384,23 @@
     ],
     "triggers_zh": "SRE 故障 监控 告警 SLA 部署 可靠性",
     "triggers_en": "sre incident monitoring alert sla deployment reliability",
+    "use_when_zh": [
+      "服务挂了",
+      "线上报警",
+      "SLO 怎么定",
+      "故障复盘",
+      "值班 oncall",
+      "可用性 99.9 还是 99.99",
+      "事故响应"
+    ],
+    "use_when_en": [
+      "production outage",
+      "oncall",
+      "SLO definition",
+      "postmortem",
+      "incident response",
+      "availability target"
+    ],
     "path": "tech/devops/sre-engineer.html"
   },
   {
@@ -250,6 +424,22 @@
     ],
     "triggers_zh": "移动 iOS Android Swift Kotlin React Native Flutter 跨端 App Store Play Store ANR 启动性能 内存",
     "triggers_en": "mobile ios android swift kotlin react-native flutter cross-platform app-store play-store anr startup memory",
+    "use_when_zh": [
+      "iOS 开发",
+      "Android 开发",
+      "React Native",
+      "Flutter",
+      "App 性能",
+      "App 上架",
+      "原生 vs 跨平台"
+    ],
+    "use_when_en": [
+      "iOS app",
+      "Android app",
+      "React Native",
+      "Flutter",
+      "native vs cross-platform"
+    ],
     "path": "tech/mobile/mobile-engineer.html"
   },
   {
@@ -271,6 +461,28 @@
     ],
     "triggers_zh": "性能 性能优化 慢查询 缓存 预加载 渲染优化 打点 监控指标 p99 响应时间",
     "triggers_en": "performance optimization slow-query cache preload render metrics p99 latency throughput profiling",
+    "use_when_zh": [
+      "性能慢",
+      "卡顿",
+      "响应时间长",
+      "QPS 上不去",
+      "数据库慢查询",
+      "内存泄漏",
+      "CPU 占用高",
+      "GC 频繁",
+      "首屏加载慢",
+      "接口超时"
+    ],
+    "use_when_en": [
+      "slow response",
+      "high latency",
+      "low throughput",
+      "slow query",
+      "memory leak",
+      "high CPU",
+      "GC overhead",
+      "TTFB"
+    ],
     "path": "tech/performance/performance-engineer.html"
   },
   {
@@ -293,6 +505,21 @@
     ],
     "triggers_zh": "QA 测试 单元测试 集成测试 E2E 端到端 测试覆盖率 性能测试 回归测试 测试金字塔",
     "triggers_en": "qa testing unit-test integration e2e coverage performance-test regression test-pyramid",
+    "use_when_zh": [
+      "测试覆盖率",
+      "回归测试",
+      "自动化测试",
+      "单元测试要不要写",
+      "测试策略",
+      "bug 太多"
+    ],
+    "use_when_en": [
+      "test coverage",
+      "regression suite",
+      "automation framework",
+      "unit vs integration",
+      "QA strategy"
+    ],
     "path": "tech/qa/qa-engineer.html"
   },
   {
@@ -313,6 +540,24 @@
     ],
     "triggers_zh": "安全 渗透 漏洞 加密 认证 鉴权 XSS CSRF SQL注入 密钥管理 威胁建模",
     "triggers_en": "security pentest vulnerability encryption auth xss csrf sqli secret threat-model",
+    "use_when_zh": [
+      "SQL 注入",
+      "XSS 漏洞",
+      "鉴权设计",
+      "权限被绕过",
+      "数据泄露",
+      "等保合规",
+      "密码怎么存",
+      "JWT 安全"
+    ],
+    "use_when_en": [
+      "SQL injection",
+      "XSS vulnerability",
+      "auth bypass",
+      "privilege escalation",
+      "data breach",
+      "OWASP top 10"
+    ],
     "path": "tech/security/security-engineer.html"
   }
 ]

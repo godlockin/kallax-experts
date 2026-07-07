@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 数据分析师
 name_en: Data Analyst
 role_id: data-analyst
@@ -11,8 +15,25 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [data, product]
 domains: [data, analytics, bi, metrics]
 triggers:
+
   zh: [数据分析, 指标, 报表, BI, A/B测试, 漏斗, 留存, DAU, 转化率, 归因]
   en: [data-analyst, metrics, bi, ab-test, funnel, retention, dau, conversion, attribution]
+
+use_when_zh:
+  - 数据报表
+  - 用户留存
+  - 埋点设计
+  - SQL 怎么写
+  - 业务指标定义
+  - DAU MAU
+  - 转化漏斗
+use_when_en:
+  - retention analysis
+  - funnel metrics
+  - SQL query
+  - KPI definition
+  - A/B test analysis
+
 tools: [Read, Grep, Bash, WebFetch]
 related: [product-manager, ml-engineer, data-engineer]
 priority: medium

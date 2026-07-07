@@ -259,6 +259,8 @@ LIST_TEMPLATE = """<!DOCTYPE html>
   }}
   .badge-source {{ background: #e3f2fd; color: #1976d2; }}
   .badge-priority {{ background: #fff3e0; color: #f57c00; }}
+  .badge-trigger {{ background: #c8e6c9; color: #2e7d32; font-weight: bold; }}
+  .badge-desc {{ background: #fff9c4; color: #f57f17; }}
   .no-results {{ text-align: center; padding: 3em; color: #999; }}
   .back {{ background: #fff; padding: 1em; border-radius: 6px; margin-bottom: 2em; border: 1px solid #eee; }}
 </style>
@@ -294,23 +296,69 @@ function render() {{
 
   let filtered = EXPERTS;
   if (q) {{
-    filtered = filtered.filter(e =>
-      (e.name + ' ' + (e.name_en || '') + ' ' + (e.vibe || '') + ' ' + (e.triggers_zh || '') + ' ' + (e.triggers_en || '') + ' ' + e.role_id)
-        .toLowerCase().includes(q)
-    );
+    // 混合搜索:对每个 expert 计算 3 个 score 维度
+    filtered = filtered.map(e => {{
+      const blob = (e.name + ' ' + (e.name_en || '') + ' ' + (e.vibe || '') + ' ' + (e.triggers_zh || '') + ' ' + (e.triggers_en || '') + ' ' + e.role_id).toLowerCase();
+      const useWhenZh = (e.use_when_zh || []).join(' ').toLowerCase();
+      const useWhenEn = (e.use_when_en || []).join(' ').toLowerCase();
+
+      // score 维度
+      const triggerHit = blob.includes(q) ? 1 : 0;
+      // use_when 双向子串:用户词 in expert 描述,或 expert 描述词 in 用户词
+      let descHit = 0;
+      let descReason = '';
+      if (useWhenZh.includes(q) || useWhenEn.includes(q)) {{
+        descHit = 1;
+        descReason = q;
+      }} else {{
+        // 反向:use_when 里的短语出现在用户输入里
+        const allPhrases = [...(e.use_when_zh || []), ...(e.use_when_en || [])];
+        for (const phrase of allPhrases) {{
+          if (phrase.length >= 2 && q.includes(phrase.toLowerCase())) {{
+            descHit = 1;
+            descReason = phrase;
+            break;
+          }}
+        }}
+        // 同义词/前缀(中文 2 字前缀)
+        if (!descHit && q.length >= 2) {{
+          for (const phrase of allPhrases) {{
+            if (phrase.length >= 2 && phrase.toLowerCase().startsWith(q.slice(0, 2))) {{
+              descHit = 0.5;
+              descReason = phrase;
+              break;
+            }}
+          }}
+        }}
+      }}
+
+      const totalScore = triggerHit * 100 + descHit * 10;
+      return {{ ...e, _score: totalScore, _trigger: triggerHit, _desc: descHit, _descReason: descReason }};
+    }})
+    .filter(e => e._score > 0)  // 必须有命中(trigger 或 desc)
+    .sort((a, b) => {{
+      if (b._score !== a._score) return b._score - a._score;
+      const priorityOrder = {{'high': 0, 'medium': 1, 'low': 2}};
+      const pa = priorityOrder[a.priority] ?? 3;
+      const pb = priorityOrder[b.priority] ?? 3;
+      if (pa !== pb) return pa - pb;
+      return (a.name_en || '').localeCompare(b.name_en || '');
+    }});
   }}
   if (division) {{
     filtered = filtered.filter(e => e.divisions.includes(division));
   }}
 
-  // 排序: priority high → medium → low
-  const priorityOrder = {{'high': 0, 'medium': 1, 'low': 2}};
-  filtered.sort((a, b) => {{
-    const pa = priorityOrder[a.priority] ?? 3;
-    const pb = priorityOrder[b.priority] ?? 3;
-    if (pa !== pb) return pa - pb;
-    return (a.name_en || '').localeCompare(b.name_en || '');
-  }});
+  // 无 query 时按 priority + 字母排序
+  if (!q) {{
+    const priorityOrder = {{'high': 0, 'medium': 1, 'low': 2}};
+    filtered.sort((a, b) => {{
+      const pa = priorityOrder[a.priority] ?? 3;
+      const pb = priorityOrder[b.priority] ?? 3;
+      if (pa !== pb) return pa - pb;
+      return (a.name_en || '').localeCompare(b.name_en || '');
+    }});
+  }}
 
   const list = document.getElementById('expert-list');
   if (filtered.length === 0) {{
@@ -318,20 +366,30 @@ function render() {{
     document.getElementById('no-results').style.display = 'block';
   }} else {{
     document.getElementById('no-results').style.display = 'none';
-    list.innerHTML = filtered.map(e => `
+    list.innerHTML = filtered.map(e => {{
+      const matchBadge = q ? (
+        e._trigger ? '<span class="badge badge-trigger">🎯 精确</span> ' :
+        '<span class="badge badge-desc">💡 语义「' + escapeHtml(e._descReason || '') + '」</span> '
+      ) : '';
+      return `
       <div class="expert">
         <h3><a href="${{e.path}}">${{e.emoji}} ${{e.name}} <code style="font-size: 0.7em; color: #888;">${{e.role_id}}</code></a></h3>
         <div class="vibe">${{e.vibe || ''}}</div>
         <div class="meta">
+          ${{matchBadge}}
           <span class="badge badge-source">📦 ${{e.source || 'custom'}}</span>
           <span class="badge badge-priority">${{e.priority || 'medium'}}</span>
           📁 ${{(e.divisions || []).join(', ') || 'n/a'}}
           · 🔑 ${{(e.triggers_zh || '').slice(0, 60)}}${{(e.triggers_zh || '').length > 60 ? '...' : ''}}
         </div>
       </div>
-    `).join('');
+    `}}).join('');
   }}
   document.getElementById('shown-count').textContent = filtered.length;
+}}
+
+function escapeHtml(s) {{
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }}
 
 function renderFilters() {{
@@ -406,6 +464,14 @@ def main():
             triggers_zh = str(triggers) if triggers else ""
             triggers_en = ""
 
+        # use_when(用户场景描述,跟 triggers 区分:这是"用户症状"不是"角色关键词")
+        use_when_zh_list = fm.get("use_when_zh", [])
+        if not isinstance(use_when_zh_list, list):
+            use_when_zh_list = [use_when_zh_list] if use_when_zh_list else []
+        use_when_en_list = fm.get("use_when_en", [])
+        if not isinstance(use_when_en_list, list):
+            use_when_en_list = [use_when_en_list] if use_when_en_list else []
+
         # 渲染 body
         body_html = md_to_html(body)
 
@@ -461,6 +527,8 @@ def main():
             "domains": domains,
             "triggers_zh": triggers_zh,
             "triggers_en": triggers_en,
+            "use_when_zh": use_when_zh_list,
+            "use_when_en": use_when_en_list,
             "path": out_html.relative_to(OUT_DIR).as_posix(),
         })
 

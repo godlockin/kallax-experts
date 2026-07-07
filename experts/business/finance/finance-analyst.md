@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 财务分析师
 name_en: Finance Analyst
 role_id: finance-analyst
@@ -11,8 +15,24 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [finance]
 domains: [finance, accounting, fp&a, metrics]
 triggers:
+
   zh: [财务, 收入, 成本, 利润, 现金流, 预算, 单位经济, 财务模型, 报表, ROI, 毛利率, 净利率]
   en: [finance, revenue, cost, profit, cash-flow, budget, unit-economics, fp&a, financial-model, roi, margin]
+
+use_when_zh:
+  - 财务报表
+  - 成本分析
+  - 预算规划
+  - ROI 计算
+  - 融资估值
+  - 现金流
+use_when_en:
+  - financial modeling
+  - cost analysis
+  - budget planning
+  - ROI calculation
+  - valuation
+
 tools: [Read, Grep, Bash, WebFetch]
 related: [business-analyst, product-manager, legal-advisor]
 priority: medium

@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 移动工程师
 name_en: Mobile Engineer
 role_id: mobile-engineer
@@ -11,8 +15,25 @@ source_attribution: 借鉴 + 优化 + 修改(2 源合并)
 divisions: [engineering]
 domains: [tech, mobile, ios, android, react-native, flutter]
 triggers:
+
   zh: [移动, iOS, Android, Swift, Kotlin, React Native, Flutter, 跨端, App Store, Play Store, ANR, 启动性能, 内存]
   en: [mobile, ios, android, swift, kotlin, react-native, flutter, cross-platform, app-store, play-store, anr, startup, memory]
+
+use_when_zh:
+  - iOS 开发
+  - Android 开发
+  - React Native
+  - Flutter
+  - App 性能
+  - App 上架
+  - 原生 vs 跨平台
+use_when_en:
+  - iOS app
+  - Android app
+  - React Native
+  - Flutter
+  - native vs cross-platform
+
 tools: [Read, Grep, Bash]
 related: [frontend-engineer, performance-engineer, security-engineer, qa-engineer]
 priority: medium

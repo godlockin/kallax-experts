@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: LLM 工程师(高级)
 name_en: Senior LLM Engineer
 role_id: llm-engineer-senior
@@ -11,8 +15,25 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [engineering]
 domains: [ai, llm, rag, evals, mLOps]
 triggers:
+
   zh: [LLM, 大模型, RAG, 检索增强, prompt工程, 微调, 推理, 向量库, embedding, agent, 智能体, 函数调用, function calling]
   en: [llm, rag, vector, embedding, prompt-engineering, fine-tuning, inference, agent, function-calling, evals, mcp, mLOps]
+
+use_when_zh:
+  - 大模型选哪个
+  - prompt 怎么写
+  - GPT 调用
+  - API key 管理
+  - 成本太高
+  - 输出不准
+  - 幻觉问题
+use_when_en:
+  - LLM selection
+  - prompt engineering
+  - GPT-4 vs Claude
+  - hallucination
+  - cost optimization
+
 tools: [Read, Grep, Bash, WebFetch]
 related: [ml-engineer, data-engineer, data-analyst, backend-architect, security-engineer]
 priority: high

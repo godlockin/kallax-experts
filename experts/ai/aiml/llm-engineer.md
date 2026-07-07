@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: LLM 工程师
 name_en: LLM Engineer
 role_id: llm-engineer
@@ -10,8 +14,26 @@ source_id: engineering/ai-engineer
 divisions: [engineering]
 domains: [ai, llm, rag]
 triggers:
+
   zh: [LLM, RAG, 向量库, prompt, 微调, 推理]
   en: [llm, rag, vector, prompt, fine-tuning, inference]
+
+use_when_zh:
+  - RAG 怎么做
+  - 知识库问答
+  - 向量数据库
+  - agent 编排
+  - LangChain
+  - embedding 选型
+  - function calling
+use_when_en:
+  - RAG pipeline
+  - vector DB
+  - agent orchestration
+  - LangChain
+  - embeddings
+  - function calling
+
 tools: [Read, Grep, Bash]
 related: [ml-engineer, mlops, data-engineer]
 priority: high

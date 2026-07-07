@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 安全工程师
 name_en: Security Engineer
 role_id: security-engineer
@@ -11,8 +15,27 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [engineering]
 domains: [tech, security, audit]
 triggers:
+
   zh: [安全, 渗透, 漏洞, 加密, 认证, 鉴权, XSS, CSRF, SQL注入, 密钥管理, 威胁建模]
   en: [security, pentest, vulnerability, encryption, auth, xss, csrf, sqli, secret, threat-model]
+
+use_when_zh:
+  - SQL 注入
+  - XSS 漏洞
+  - 鉴权设计
+  - 权限被绕过
+  - 数据泄露
+  - 等保合规
+  - 密码怎么存
+  - JWT 安全
+use_when_en:
+  - SQL injection
+  - XSS vulnerability
+  - auth bypass
+  - privilege escalation
+  - data breach
+  - OWASP top 10
+
 tools: [Read, Grep, Glob, Bash, WebFetch]
 related: [devops-engineer, sre-engineer, legal-advisor]
 priority: high

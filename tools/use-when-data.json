@@ -1,0 +1,277 @@
+{
+  "tech/backend/backend-architect.md": {
+    "use_when_zh": [
+      "接口设计",
+      "数据库表结构",
+      "微服务拆分",
+      "服务调用链",
+      "API 选型 REST 还是 GraphQL",
+      "新功能从 0 设计",
+      "重构老系统"
+    ],
+    "use_when_en": [
+      "API design",
+      "schema design",
+      "microservice split",
+      "service mesh",
+      "monolith to microservices",
+      "greenfield backend"
+    ]
+  },
+  "tech/devops/sre-engineer.md": {
+    "use_when_zh": [
+      "服务挂了",
+      "线上报警",
+      "SLO 怎么定",
+      "故障复盘",
+      "值班 oncall",
+      "可用性 99.9 还是 99.99",
+      "事故响应"
+    ],
+    "use_when_en": [
+      "production outage",
+      "oncall",
+      "SLO definition",
+      "postmortem",
+      "incident response",
+      "availability target"
+    ]
+  },
+  "tech/devops/devops-engineer.md": {
+    "use_when_zh": [
+      "CI/CD 怎么搭",
+      "k8s 部署",
+      "Docker 镜像",
+      "Jenkinsfile 怎么写",
+      "流水线太慢",
+      "发布流程"
+    ],
+    "use_when_en": [
+      "CI/CD pipeline",
+      "k8s deployment",
+      "docker build",
+      "jenkins pipeline",
+      "deploy automation"
+    ]
+  },
+  "tech/security/security-engineer.md": {
+    "use_when_zh": [
+      "SQL 注入",
+      "XSS 漏洞",
+      "鉴权设计",
+      "权限被绕过",
+      "数据泄露",
+      "等保合规",
+      "密码怎么存",
+      "JWT 安全"
+    ],
+    "use_when_en": [
+      "SQL injection",
+      "XSS vulnerability",
+      "auth bypass",
+      "privilege escalation",
+      "data breach",
+      "OWASP top 10"
+    ]
+  },
+  "tech/qa/qa-engineer.md": {
+    "use_when_zh": [
+      "测试覆盖率",
+      "回归测试",
+      "自动化测试",
+      "单元测试要不要写",
+      "测试策略",
+      "bug 太多"
+    ],
+    "use_when_en": [
+      "test coverage",
+      "regression suite",
+      "automation framework",
+      "unit vs integration",
+      "QA strategy"
+    ]
+  },
+  "ai/data/data-analyst.md": {
+    "use_when_zh": [
+      "数据报表",
+      "用户留存",
+      "埋点设计",
+      "SQL 怎么写",
+      "业务指标定义",
+      "DAU MAU",
+      "转化漏斗"
+    ],
+    "use_when_en": [
+      "retention analysis",
+      "funnel metrics",
+      "SQL query",
+      "KPI definition",
+      "A/B test analysis"
+    ]
+  },
+  "ai/llm/llm-engineer.md": {
+    "use_when_zh": [
+      "大模型选哪个",
+      "prompt 怎么写",
+      "GPT 调用",
+      "API key 管理",
+      "成本太高",
+      "输出不准",
+      "幻觉问题"
+    ],
+    "use_when_en": [
+      "LLM selection",
+      "prompt engineering",
+      "GPT-4 vs Claude",
+      "hallucination",
+      "cost optimization"
+    ]
+  },
+  "ai/aiml/llm-engineer.md": {
+    "use_when_zh": [
+      "RAG 怎么做",
+      "知识库问答",
+      "向量数据库",
+      "agent 编排",
+      "LangChain",
+      "embedding 选型",
+      "function calling"
+    ],
+    "use_when_en": [
+      "RAG pipeline",
+      "vector DB",
+      "agent orchestration",
+      "LangChain",
+      "embeddings",
+      "function calling"
+    ]
+  },
+  "business/legal-advisor.md": {
+    "use_when_zh": [
+      "合同怎么审",
+      "NDA 协议",
+      "合规风险",
+      "法律咨询",
+      "知识产权",
+      "仲裁诉讼"
+    ],
+    "use_when_en": [
+      "contract review",
+      "NDA agreement",
+      "compliance risk",
+      "IP protection",
+      "litigation"
+    ]
+  },
+  "business/legal/legal-compliance.md": {
+    "use_when_zh": [
+      "GDPR 合规",
+      "数据合规",
+      "等保测评",
+      "用户隐私",
+      "cookie 政策",
+      "数据出境"
+    ],
+    "use_when_en": [
+      "GDPR compliance",
+      "data privacy",
+      "PIPL",
+      "cookie policy",
+      "data residency"
+    ]
+  },
+  "business/finance/finance-analyst.md": {
+    "use_when_zh": [
+      "财务报表",
+      "成本分析",
+      "预算规划",
+      "ROI 计算",
+      "融资估值",
+      "现金流"
+    ],
+    "use_when_en": [
+      "financial modeling",
+      "cost analysis",
+      "budget planning",
+      "ROI calculation",
+      "valuation"
+    ]
+  },
+  "tech/performance/performance-engineer.md": {
+    "use_when_zh": [
+      "性能慢",
+      "卡顿",
+      "响应时间长",
+      "QPS 上不去",
+      "数据库慢查询",
+      "内存泄漏",
+      "CPU 占用高",
+      "GC 频繁",
+      "首屏加载慢",
+      "接口超时"
+    ],
+    "use_when_en": [
+      "slow response",
+      "high latency",
+      "low throughput",
+      "slow query",
+      "memory leak",
+      "high CPU",
+      "GC overhead",
+      "TTFB"
+    ]
+  },
+  "tech/mobile/mobile-engineer.md": {
+    "use_when_zh": [
+      "iOS 开发",
+      "Android 开发",
+      "React Native",
+      "Flutter",
+      "App 性能",
+      "App 上架",
+      "原生 vs 跨平台"
+    ],
+    "use_when_en": [
+      "iOS app",
+      "Android app",
+      "React Native",
+      "Flutter",
+      "native vs cross-platform"
+    ]
+  },
+  "design/ux-research/ux-researcher.md": {
+    "use_when_zh": [
+      "用户调研",
+      "可用性测试",
+      "用户画像",
+      "需求挖掘",
+      "用户体验差",
+      "按钮放哪里"
+    ],
+    "use_when_en": [
+      "user research",
+      "usability testing",
+      "persona",
+      "user journey",
+      "UX audit"
+    ]
+  },
+  "design/product-manager.md": {
+    "use_when_zh": [
+      "产品规划",
+      "需求优先级",
+      "MVP 怎么定",
+      "竞品分析",
+      "路线图",
+      "用户故事",
+      "老板说要加个功能"
+    ],
+    "use_when_en": [
+      "product roadmap",
+      "feature prioritization",
+      "MVP definition",
+      "competitive analysis",
+      "user story"
+    ]
+  }
+}

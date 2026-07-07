@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 产品经理
 name_en: Product Manager
 role_id: product-manager
@@ -10,8 +14,25 @@ source_id: product/product-manager
 divisions: [product]
 domains: [product, ux, research]
 triggers:
+
   zh: [产品, 用户, 需求, 路线图, MVP, 增长]
   en: [product, user, requirement, roadmap, mvp, growth]
+
+use_when_zh:
+  - 产品规划
+  - 需求优先级
+  - MVP 怎么定
+  - 竞品分析
+  - 路线图
+  - 用户故事
+  - 老板说要加个功能
+use_when_en:
+  - product roadmap
+  - feature prioritization
+  - MVP definition
+  - competitive analysis
+  - user story
+
 tools: [Read, WebFetch, Grep]
 related: [ux-researcher, marketing, business-analyst]
 priority: high

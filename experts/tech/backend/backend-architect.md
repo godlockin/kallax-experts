@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 后端架构师
 name_en: Backend Architect
 role_id: backend-architect
@@ -10,8 +14,26 @@ source_id: engineering/backend-architect
 divisions: [engineering]
 domains: [tech, backend]
 triggers:
+
   zh: [后端, API, 架构, 微服务, 数据库, 性能]
   en: [backend, api, architecture, microservice, database, performance]
+
+use_when_zh:
+  - 接口设计
+  - 数据库表结构
+  - 微服务拆分
+  - 服务调用链
+  - API 选型 REST 还是 GraphQL
+  - 新功能从 0 设计
+  - 重构老系统
+use_when_en:
+  - API design
+  - schema design
+  - microservice split
+  - service mesh
+  - monolith to microservices
+  - greenfield backend
+
 tools: [Read, Grep, Glob, Bash]
 related: [dba, devops, security]
 priority: high

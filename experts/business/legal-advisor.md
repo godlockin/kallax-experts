@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 法律顾问
 name_en: Legal Advisor
 role_id: legal-advisor
@@ -10,8 +14,24 @@ source_id: business/legal
 divisions: [specialized]
 domains: [legal, compliance, contract]
 triggers:
+
   zh: [法律, 合同, 合规, 诉讼, 知识产权, 隐私]
   en: [legal, contract, compliance, lawsuit, ip, privacy]
+
+use_when_zh:
+  - 合同怎么审
+  - NDA 协议
+  - 合规风险
+  - 法律咨询
+  - 知识产权
+  - 仲裁诉讼
+use_when_en:
+  - contract review
+  - NDA agreement
+  - compliance risk
+  - IP protection
+  - litigation
+
 tools: [Read, Grep, WebFetch]
 related: [business-analyst, compliance-officer]
 priority: medium

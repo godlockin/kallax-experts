@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: UX 研究员
 name_en: UX Researcher
 role_id: ux-researcher
@@ -11,8 +15,24 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [design, product]
 domains: [ux, research, user-research, usability]
 triggers:
+
   zh: [UX, 用户研究, 用研, 可用性, 用户访谈, 问卷, 焦点小组, 用户画像, persona, 用户旅程, journey, 痛点]
   en: [ux, user-research, usability, interview, survey, focus-group, persona, user-journey, pain-point]
+
+use_when_zh:
+  - 用户调研
+  - 可用性测试
+  - 用户画像
+  - 需求挖掘
+  - 用户体验差
+  - 按钮放哪里
+use_when_en:
+  - user research
+  - usability testing
+  - persona
+  - user journey
+  - UX audit
+
 tools: [Read, WebFetch, Grep]
 related: [product-manager, ui-designer, data-analyst]
 priority: high

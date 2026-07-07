@@ -1,4 +1,8 @@
 ---
+
+
+
+
 name: 性能工程师
 name_en: Performance Engineer
 role_id: performance-engineer
@@ -11,8 +15,31 @@ source_attribution: 借鉴 + 优化 + 修改
 divisions: [engineering]
 domains: [tech, performance, observability, optimization]
 triggers:
+
   zh: [性能, 性能优化, 慢查询, 缓存, 预加载, 渲染优化, 打点, 监控指标, p99, 响应时间]
   en: [performance, optimization, slow-query, cache, preload, render, metrics, p99, latency, throughput, profiling]
+
+use_when_zh:
+  - 性能慢
+  - 卡顿
+  - 响应时间长
+  - QPS 上不去
+  - 数据库慢查询
+  - 内存泄漏
+  - CPU 占用高
+  - GC 频繁
+  - 首屏加载慢
+  - 接口超时
+use_when_en:
+  - slow response
+  - high latency
+  - low throughput
+  - slow query
+  - memory leak
+  - high CPU
+  - GC overhead
+  - TTFB
+
 tools: [Read, Grep, Bash, WebFetch]
 related: [backend-architect, sre-engineer, frontend-engineer, llm-engineer-senior]
 priority: high
