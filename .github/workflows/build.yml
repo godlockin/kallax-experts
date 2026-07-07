@@ -50,19 +50,23 @@ jobs:
           echo "=== 生成的 HTML 文件 ==="
           find docs -name "*.html" -type f | wc -l
           echo ""
-          echo "=== 根 index.html 存在? ==="
-          ls -la index.html
-          echo ""
-          echo "=== experts 列表存在? ==="
-          ls -la docs/experts/index.html docs/experts/data.json
-          echo ""
-          echo "=== 链接测试(本地) ==="
-          for url in "README.html" "experts/index.html" "experts/data.json"; do
-            if [[ -f "$url" ]] || [[ -f "docs/$url" ]]; then
-              size=$(stat -c %s "$url" 2>/dev/null || stat -c %s "docs/$url" 2>/dev/null)
-              echo "  ✅ $url ($size bytes)"
+          echo "=== 关键文件存在? ==="
+          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
+            if [[ -f "$f" ]]; then
+              size=$(stat -c %s "$f")
+              echo "  ✅ $f ($size bytes)"
             else
-              echo "  ❌ $url NOT FOUND"
+              echo "  ❌ $f NOT FOUND"
+              exit 1
+            fi
+          done
+          # docs/README.html 是 build-html.py 生成的(README 在 docs/ 目录)
+          for f in docs/README.html docs/USAGE.html docs/ARCHITECTURE.html docs/CONTRIBUTING.html docs/PAGES.html docs/INDEX.html; do
+            if [[ -f "$f" ]]; then
+              size=$(stat -c %s "$f")
+              echo "  ✅ $f ($size bytes)"
+            else
+              echo "  ❌ $f NOT FOUND"
               exit 1
             fi
           done
