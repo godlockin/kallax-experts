@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kallax-experts / 专家组 | kallax-experts</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    max-width: 900px; margin: 2em auto; padding: 0 1em;
+    color: #1a1a1a; background: #fafafa; line-height: 1.6;
+  }
+  h1, h2, h3 { color: #1a1a1a; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; margin-top: 1.5em; }
+  h3 { font-size: 1.2em; margin-top: 1.2em; border-bottom: none; }
+  pre { background: #f5f5f5; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-family: monospace; }
+  pre code { background: transparent; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  td, th { border: 1px solid #ddd; padding: 0.5em; }
+  th { background: #f0f0f0; }
+  a { color: #0066cc; }
+  p { margin: 1em 0; }
+  .back { background: #fff; padding: 1em; border-radius: 6px; margin-bottom: 2em; border: 1px solid #eee; }
+</style>
+</head>
+<body>
+<a href="index.html" class="back">← 返回 kallax-experts 首页</a>
+<p>> ⚠️ 这是仓库根 <a href="../README.md">README.md</a> 的副本,放在 docs/ 下方便 GitHub Pages 访问。
+> 仓库根 README 由 GitHub Pages 自动渲染(legacy build_type 不需 .html)。</p>
+
+<p>---</p>
+
+<h1>kallax-experts / 专家组</h1>
+
+<p>> <strong>🚀 GitHub Pages 已部署</strong> → <a href="https://godlockin.github.io/kallax-experts/">godlockin.github.io/kallax-experts</a> (含 15 expert 可搜索)
+>
+> <strong>kallax 框架的外部专家组项目</strong>
+> 融合 <a href="https://github.com/godlockin/eket-experts-extended">eket-experts-extended</a> 的<strong>倒排索引 + CLI 搜索</strong>
+> + <a href="https://github.com/msitarzewski/agency-agents">agency-agents</a> 的<strong>frontmatter metadata + 17 division</strong>
+> 形成一个<strong>对外独立、可组合、可自动选</strong>的专家组项目。</p>
+
+<p>---</p>
+
+<h2>🎯 设计目标</h2>
+
+<table>
+<tr><td>来源</td><td>优点</td><td>整合方式</td></tr>
+<tr><td><strong>eket</strong></td><td>70 个专家 + YAML 倒排索引 + CLI 搜索</td><td>继承 YAML 倒排 + CLI 工具</td></tr>
+<tr><td><strong>agency-agents</strong></td><td>280 个 agent + frontmatter + 17 division</td><td>继承 frontmatter + division 分组</td></tr>
+<tr><td><strong>kallax</strong></td><td>default 5 个 + 统一触发</td><td>新增:跨库引用 + 竞技场 + 任务-专家匹配</td></tr>
+</table>
+
+<strong>kallax-experts 解决</strong>:
+1. ✅ 不重复造专家(融合 eket + agency 的全部)
+2. ✅ 标准化 frontmatter(兼容 agency)
+3. ✅ YAML 倒排索引(沿用 eket)
+4. ✅ CLI 工具(从 eket 借鉴)
+5. ✅ 跨库引用(eket + agency 各自维护,kallax-experts 引用)
+
+<p>---</p>
+
+<h2>📂 仓库结构</h2>
+
+<pre><code class="language-">kallax-experts/
+├── README.md                    本文件
+├── LICENSE                       MIT
+├── INDEX.md                      人类可读索引(全表)
+├── INDEX.yml                     机器可读索引(倒排)
+├── experts/                      全部专家
+│   ├── tech/                     工程技术(eket + agency 合并)
+│   │   ├── backend/
+│   │   ├── frontend/
+│   │   ├── devops/
+│   │   ├── security/
+│   │   ├── data/
+│   │   ├── mobile/
+│   │   ├── performance/
+│   │   └── qa/
+│   ├── ai/                       AI/ML(主要来自 agency-agents)
+│   ├── design/                   设计
+│   ├── marketing/                营销
+│   ├── research/                 研究
+│   ├── business/                 商业/法律/金融
+│   └── INDEX.md                  分类索引
+├── schema/
+│   └── frontmatter.yml           frontmatter 模式(标准化)
+├── skills/                       配套工具(eket skill 风格)
+│   ├── expert-search/            关键词搜索
+│   ├── expert-arena/             竞技场(评分)
+│   └── expert-compose/           多专家合成
+├── tools/
+│   ├── search.sh                 CLI 工具
+│   ├── arena.sh
+│   ├── install.sh
+│   └── validate.sh               验证所有 frontmatter + 索引
+├── docs/
+│   ├── ARCHITECTURE.md           融合架构
+│   ├── CONTRIBUTING.md           贡献指南
+│   └── FAQ.md
+└── .github/
+    └── workflows/
+        └── validate.yml          CI 验证
+</code></pre>
+
+<p>---</p>
+
+<h2>🎯 怎么用</h2>
+
+<h3>安装</h3>
+
+<pre><code class="language-bash">git clone https://github.com/godlockin/kallax-experts.git \
+  ~/.claude/experts-extended/kallax-experts
+</code></pre>
+
+<h3>搜索专家(CLI)</h3>
+
+<pre><code class="language-bash"><h1>关键词搜索</h1>
+bash tools/search.sh "API"
+bash tools/search.sh "架构"
+bash tools/search.sh "AI"
+
+<h1>竞技场(多专家对比)</h1>
+bash tools/arena.sh "性能优化"
+
+<h1>完整列表</h1>
+bash tools/search.sh --all
+</code></pre>
+
+<h3>在 Claude Code 用</h3>
+
+<pre><code class="language-bash"><h1>让大模型读专家 prompt</h1>
+Read ~/.claude/experts-extended/kallax-experts/experts/tech/backend/backend-architect.md
+</code></pre>
+
+<p>---</p>
+
+<h2>📋 frontmatter Schema(标准)</h2>
+
+<p>每个 expert .md 文件<strong>必须</strong>包含 YAML frontmatter:</p>
+
+<pre><code class="language-yaml">---
+name: 后端架构师
+name_en: Backend Architect
+role_id: backend-architect
+emoji: 🏗️
+color: blue
+vibe: 设计可扩展的后端系统,边界清晰,接口稳定
+source: agency-agents     # 来源(agency-agents / eket / custom)
+source_id: engineering/backend-architect  # 原始 ID
+divisions: [engineering]
+domains: [tech, backend]
+triggers:
+  zh: [后端, API, 架构, 微服务, 数据库]
+  en: [backend, api, architecture, microservice, database]
+tools: [Read, Grep, Glob, Bash]
+related: [dba, devops, security]
+priority: high
+tokens: ~800
+updated: 2026-07-05
+---
+
+<h1>后端架构师</h1>
+
+<p>你是 <strong>kallax-experts</strong> 的后端架构师角色,负责...
+</code></pre></p>
+
+<p>详见 <a href="schema/frontmatter.yml">schema/frontmatter.yml</a>。</p>
+
+<p>---</p>
+
+<h2>🔗 关联项目</h2>
+
+<p>- <strong>kallax</strong> (<a href="https://github.com/godlockin/kallax">godlockin/kallax</a>) — 主框架
+- <strong>eket-experts-extended</strong> (<a href="https://github.com/godlockin/eket-experts-extended">godlockin/eket-experts-extended</a>) — 70 个专家
+- <strong>agency-agents</strong> (<a href="https://github.com/msitarzewski/agency-agents">msitarzewski/agency-agents</a>) — 280 个 agent</p>
+
+<strong>整合策略</strong>:
+- kallax-experts <strong>从 eket 继承倒排索引 + CLI 搜索</strong>
+- 从 agency <strong>继承 frontmatter + 17 division</strong>
+- 不复制专家内容(eket + agency 各自维护,本仓库仅维护<strong>统一索引 + frontmatter 标准</strong>)
+- 实际专家 prompt 在 eket + agency,本仓库做<strong>跨库引用</strong>
+
+<p>---</p>
+
+<h2>🤝 贡献</h2>
+
+<p>欢迎贡献!见 <a href="docs/CONTRIBUTING.md">docs/CONTRIBUTING.md</a>。</p>
+
+<p>---</p>
+
+<strong>License</strong>: MIT
+<strong>Last updated</strong>: 2026-07-05
+<strong>Status</strong>: 🚧 初始化中(融合阶段)
+<hr>
+<p class="back">
+  <a href="https://github.com/godlockin/kallax-experts/blob/main/docs/README.md">📝 在 GitHub 上编辑此页</a>
+  · <a href="https://github.com/godlockin/kallax-experts">kallax-experts</a>
+</p>
+</body>
+</html>

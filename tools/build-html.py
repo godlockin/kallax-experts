@@ -124,7 +124,7 @@ def main():
     converted = 0
     for md_file in sorted(docs_dir.glob("*.md")):
         # 跳过根 README(本仓库 README 是项目说明,放根,GitHub 自动渲染)
-        if md_file.name == "README.md" and md_file.parent == Path("."):
+        if md_file.name == "README.md" and md_file.parent.resolve() == Path(".").resolve():
             continue
 
         md_text = md_file.read_text(encoding="utf-8")
