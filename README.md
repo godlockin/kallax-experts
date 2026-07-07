@@ -1,5 +1,7 @@
 # kallax-experts / 专家组
 
+> **🚀 GitHub Pages 已部署** → [godlockin.github.io/kallax-experts](https://godlockin.github.io/kallax-experts/) (含 15 expert 可搜索)
+>
 > **kallax 框架的外部专家组项目**
 > 融合 [eket-experts-extended](https://github.com/godlockin/eket-experts-extended) 的**倒排索引 + CLI 搜索**
 > + [agency-agents](https://github.com/msitarzewski/agency-agents) 的**frontmatter metadata + 17 division**

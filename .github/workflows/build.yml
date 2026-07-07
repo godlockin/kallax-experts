@@ -1,0 +1,83 @@
+name: build
+
+# ============================================================
+# 安全审计(Security Audit)
+# ============================================================
+# - 触发: push 到 main/miao + pull_request + workflow_dispatch
+# - 不用 github.event.* 用户输入(issue body / commit message 等)
+# - 不用 client_payload.* (防 attacker 设任意字段)
+# - 不用 pull_request.head.ref (防 ref injection)
+# - build 步骤用 python3 + 项目脚本(无外部依赖)
+# - workflow_dispatch 无 payload 输入
+# - 所有 env: 直接用 GitHub 控制 metadata(branch / sha)
+# ============================================================
+
+on:
+  push:
+    branches: [main, miao]
+  pull_request:
+    branches: [main, miao]
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build static site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run build-html.py
+        run: python3 tools/build-html.py
+
+      - name: Run build-experts.py
+        run: python3 tools/build-experts.py
+
+      - name: Run validate.sh
+        run: |
+          chmod +x tools/validate.sh
+          bash tools/validate.sh
+
+      - name: Verify build output
+        run: |
+          echo "=== 生成的 HTML 文件 ==="
+          find docs -name "*.html" -type f | wc -l
+          echo ""
+          echo "=== 根 index.html 存在? ==="
+          ls -la index.html
+          echo ""
+          echo "=== experts 列表存在? ==="
+          ls -la docs/experts/index.html docs/experts/data.json
+          echo ""
+          echo "=== 链接测试(本地) ==="
+          for url in "README.html" "experts/index.html" "experts/data.json"; do
+            if [[ -f "$url" ]] || [[ -f "docs/$url" ]]; then
+              size=$(stat -c %s "$url" 2>/dev/null || stat -c %s "docs/$url" 2>/dev/null)
+              echo "  ✅ $url ($size bytes)"
+            else
+              echo "  ❌ $url NOT FOUND"
+              exit 1
+            fi
+          done
+
+      - name: Show diff summary
+        if: always()
+        run: |
+          echo "=== git status ==="
+          git status --short
+          echo ""
+          echo "=== 关键文件 hash ==="
+          for f in index.html docs/index.html docs/experts/index.html docs/experts/data.json; do
+            if [[ -f "$f" ]]; then
+              hash=$(sha256sum "$f" | cut -c1-12)
+              size=$(stat -c %s "$f")
+              echo "  $hash  $size  $f"
+            fi
+          done
