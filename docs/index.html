@@ -1,105 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kallax-experts / 专家组</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      max-width: 960px; margin: 0 auto; padding: 2em 1em;
-      color: #1a1a1a; background: #fafafa; line-height: 1.6;
-    }
-    h1 { font-size: 2.2em; border-bottom: 3px solid #1a1a1a; padding-bottom: 0.3em; }
-    h2 { margin-top: 2em; color: #333; }
-    .subtitle { color: #666; font-size: 1.1em; margin-top: -0.5em; }
-    .search { width: 100%; padding: 0.8em; font-size: 1.1em; border: 1px solid #ddd; border-radius: 6px; margin: 1.5em 0; }
-    .stats { display: flex; gap: 2em; margin: 1em 0; }
-    .stat { background: #fff; padding: 1em; border-radius: 6px; border: 1px solid #eee; }
-    .stat-num { font-size: 2em; font-weight: bold; color: #0066cc; }
-    .stat-label { color: #666; font-size: 0.9em; }
-    .expert { background: #fff; padding: 1em; margin: 0.5em 0; border-radius: 6px; border-left: 4px solid #0066cc; }
-    .expert:hover { background: #f5f5f5; }
-    .expert-id { color: #888; font-family: monospace; font-size: 0.9em; }
-    .meta { color: #666; font-size: 0.85em; margin-top: 0.3em; }
-    .badge { display: inline-block; padding: 0.1em 0.5em; border-radius: 3px; font-size: 0.8em; margin-right: 0.3em; }
-    .badge-source { background: #e3f2fd; color: #1976d2; }
-    .badge-priority { background: #fff3e0; color: #f57c00; }
-    .empty { text-align: center; padding: 2em; color: #999; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expert 索引 / Index | kallax-experts</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    max-width: 900px; margin: 2em auto; padding: 0 1em;
+    color: #1a1a1a; background: #fafafa; line-height: 1.6;
+  }
+  h1, h2, h3 { color: #1a1a1a; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; margin-top: 1.5em; }
+  h3 { font-size: 1.2em; margin-top: 1.2em; border-bottom: none; }
+  pre { background: #f5f5f5; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-family: monospace; }
+  pre code { background: transparent; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  td, th { border: 1px solid #ddd; padding: 0.5em; }
+  th { background: #f0f0f0; }
+  a { color: #0066cc; }
+  p { margin: 1em 0; }
+  .back { background: #fff; padding: 1em; border-radius: 6px; margin-bottom: 2em; border: 1px solid #eee; }
+</style>
 </head>
 <body>
-  <h1>🎯 kallax-experts</h1>
-  <p class="subtitle">融合 eket-experts-extended + agency-agents + kallax-extension 的统一专家组</p>
+<a href="index.html" class="back">← 返回 kallax-experts 首页</a>
+<h1>Expert 索引 / Index</h1>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num" id="total">0</div>
-      <div class="stat-label">本地 expert</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">350+</div>
-      <div class="stat-label">跨库引用</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5</div>
-      <div class="stat-label">配套工具</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">MIT</div>
-      <div class="stat-label">License</div>
-    </div>
-  </div>
+<p>> 本仓库 15 个本地 expert(融合 eket + agency)。
+> 完整列表(带搜索)见 <a href="/experts/">/experts/</a>。</p>
 
-  <h2>📚 文档</h2>
-  <ul>
-    <li><a href="/README.md">项目说明</a> — 融合理念 + 4 层架构</li>
-    <li><a href="/USAGE.md">引用策略</a> — 大模型如何用,需要现场下载吗?</li>
-    <li><a href="/ARCHITECTURE.md">融合架构</a> — eket + agency + kallax 设计</li>
-    <li><a href="/CONTRIBUTING.md">贡献指南</a> — 如何加新 expert</li>
-    <li><a href="/INDEX.md">人类可读索引</a> — 所有 expert 列表</li>
-  </ul>
+<h2>全部 15 个 expert</h2>
 
-  <h2>🔍 搜索 Experts</h2>
-  <input type="search" class="search" id="search" placeholder="搜索关键词,如:API, 安全, LLM, 性能..." autofocus>
+<table>
+<tr><td>Role ID</td><td>emoji</td><td>中文</td><td>借鉴</td></tr>
+<tr><td>backend-architect</td><td>🏗️</td><td>后端架构师</td><td>基础</td></tr>
+<tr><td>sre-engineer</td><td>🛡️</td><td>SRE 工程师</td><td>基础</td></tr>
+<tr><td>llm-engineer</td><td>🤖</td><td>LLM 工程师</td><td>基础</td></tr>
+<tr><td>legal-advisor</td><td>⚖️</td><td>法律顾问</td><td>基础</td></tr>
+<tr><td>product-manager</td><td>🎯</td><td>产品经理</td><td>基础</td></tr>
+<tr><td>security-engineer</td><td>🔒</td><td>安全工程师</td><td>eket</td></tr>
+<tr><td>devops-engineer</td><td>⚙️</td><td>DevOps 工程师</td><td>eket</td></tr>
+<tr><td>qa-engineer</td><td>🧪</td><td>QA 工程师</td><td>eket</td></tr>
+<tr><td>data-analyst</td><td>📊</td><td>数据分析师</td><td>eket</td></tr>
+<tr><td>llm-engineer-senior</td><td>🤖</td><td>LLM 工程师(高级)</td><td>agency</td></tr>
+<tr><td>performance-engineer</td><td>⚡</td><td>性能工程师</td><td>agency</td></tr>
+<tr><td>mobile-engineer</td><td>📱</td><td>移动工程师</td><td>agency</td></tr>
+<tr><td>ux-researcher</td><td>🔍</td><td>UX 研究员</td><td>agency</td></tr>
+<tr><td>finance-analyst</td><td>💰</td><td>财务分析师</td><td>agency</td></tr>
+<tr><td>legal-compliance</td><td>📜</td><td>法务合规</td><td>agency</td></tr>
+</table>
 
-  <div id="results"></div>
+<h2>跨库引用</h2>
 
-  <h2>🛠️ 工具</h2>
-  <ul>
-    <li><a href="https://github.com/godlockin/kallax-experts/blob/main/tools/search.sh">search.sh</a> — 关键词搜索</li>
-    <li><a href="https://github.com/godlockin/kallax-experts/blob/main/tools/arena.sh">arena.sh</a> — 竞技场(评分)</li>
-    <li><a href="https://github.com/godlockin/kallax-experts/blob/main/tools/compose.sh">compose.sh</a> — 多专家合成(2024 新)</li>
-    <li><a href="https://github.com/godlockin/kallax-experts/blob/main/tools/validate.sh">validate.sh</a> — frontmatter 验证</li>
-    <li><a href="https://github.com/godlockin/kallax-experts/blob/main/tools/install.sh">install.sh</a> — 安装脚本</li>
-  </ul>
+<p>除本地 15 个,还引用:</p>
 
-  <h2>📦 安装</h2>
-  <pre><code># 装到本地(一次性,~5MB,~10秒)
-git clone --depth 1 https://github.com/godlockin/kallax-experts.git \
-  ~/.claude/experts-extended/kallax-experts
-
-# 或用 kallax 封装
-bash /path/to/kallax/scripts/expert-install.sh kallax-experts</code></pre>
-
-  <h2>🔗 关联项目</h2>
-  <ul>
-    <li><a href="https://github.com/godlockin/kallax">kallax</a> — 主框架</li>
-    <li><a href="https://github.com/godlockin/eket-experts-extended">eket-experts-extended</a> — 70 专家</li>
-    <li><a href="https://github.com/msitarzewski/agency-agents">agency-agents</a> — 280 agent</li>
-  </ul>
-
-  <hr>
-  <p class="meta">
-    <a href="https://github.com/godlockin/kallax-experts">github.com/godlockin/kallax-experts</a>
-    · v1.2.0 · MIT License
-    · 本页是 <code>pages-build-deployment</code> 部署的静态站
-  </p>
-
-  <script>
-    // 动态加载 expert 列表(从 JSON inline)
-    const experts = [];
-  </script>
+<p>- <a href="https://github.com/godlockin/eket-experts-extended">eket-experts-extended</a> (70 个)
+- <a href="https://github.com/msitarzewski/agency-agents">agency-agents</a> (280 个)
+</p>
+<hr>
+<p class="back">
+  <a href="https://github.com/godlockin/kallax-experts/blob/main/docs/INDEX.md">📝 在 GitHub 上编辑此页</a>
+  · <a href="https://github.com/godlockin/kallax-experts">kallax-experts</a>
+</p>
 </body>
 </html>
