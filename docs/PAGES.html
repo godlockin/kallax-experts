@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Pages 配置 / Pages Setup | kallax-experts</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    max-width: 900px; margin: 2em auto; padding: 0 1em;
+    color: #1a1a1a; background: #fafafa; line-height: 1.6;
+  }
+  h1, h2, h3 { color: #1a1a1a; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; margin-top: 1.5em; }
+  h3 { font-size: 1.2em; margin-top: 1.2em; border-bottom: none; }
+  pre { background: #f5f5f5; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-family: monospace; }
+  pre code { background: transparent; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  td, th { border: 1px solid #ddd; padding: 0.5em; }
+  th { background: #f0f0f0; }
+  a { color: #0066cc; }
+  p { margin: 1em 0; }
+  .back { background: #fff; padding: 1em; border-radius: 6px; margin-bottom: 2em; border: 1px solid #eee; }
+</style>
+</head>
+<body>
+<a href="index.html" class="back">← 返回 kallax-experts 首页</a>
+<h1>GitHub Pages 配置 / Pages Setup</h1>
+
+<p>> <strong>当前状态</strong>:<code>status: built</code> ✅,可访问 <code>https://godlockin.github.io/kallax-experts/</code>
+>
+> <strong>关键配置</strong>:<code>build_type: legacy</code> + <code>branch: miao</code> + <code>path: /docs</code></p>
+
+<h2>📋 当前配置</h2>
+
+<table>
+<tr><td>字段</td><td>值</td></tr>
+<tr><td>Source branch</td><td><code>miao</code></td></tr>
+<tr><td>Source path</td><td><code>/docs</code></td></tr>
+<tr><td>Build type</td><td><code>legacy</code> (auto via <code>pages-build-deployment</code> workflow)</td></tr>
+<tr><td>Custom domain</td><td>(none, default <code>*.github.io</code>)</td></tr>
+<tr><td>HTTPS</td><td>✅ Enforced</td></tr>
+</table>
+
+<h2>🏗️ 目录结构 vs 访问路径</h2>
+
+<p>> <strong>关键</strong>:<code>path: /docs</code> 时,<strong><code>docs/</code> 内的文件映射到站点根</strong>。</p>
+
+<pre><code class="language-">仓库(branch miao)                    →  部署 URL
+─────────────────────────────────────────────────
+index.html                          →  /
+docs/README.html                    →  /README.html
+docs/USAGE.html                     →  /USAGE.html
+docs/ARCHITECTURE.html              →  /ARCHITECTURE.html
+docs/CONTRIBUTING.html              →  /CONTRIBUTING.html
+docs/INDEX.html                     →  /INDEX.html
+docs/experts/index.html             →  /experts/index.html
+docs/experts/data.json               →  /experts/data.json
+docs/experts/ai/aiml/llm-engineer.html →  /experts/ai/aiml/llm-engineer.html
+... (15 expert .html)              →  /experts/<category>/<name>.html
+</code></pre>
+
+<strong>根 <code>index.html</code> 在仓库根</strong>(作为站点首页),<strong>不是</strong> <code>docs/index.html</code>。
+
+<h2>🔄 构建流程</h2>
+
+<p>每次 push 到 miao 分支,自动:</p>
+
+<pre><code class="language-">git push origin miao
+   ↓
+GitHub Actions: pages-build-deployment
+   ↓
+build job: success(空,只是占位)
+   ↓
+deploy job: 把 miao 分支的 docs/ + 根 index.html 部署到 GitHub Pages CDN
+   ↓
+URL: https://godlockin.github.io/kallax-experts/
+</code></pre>
+
+<h2>🤖 自动 build-html + build-experts</h2>
+
+<code>.github/workflows/build.yml</code> 跑(每次 push):
+
+<pre><code class="language-yaml">1. checkout 代码
+2. setup-python 3.11
+3. python3 tools/build-html.py     # 把 docs/*.md → docs/*.html
+4. python3 tools/build-experts.py # 把 experts/*.md → docs/experts/<strong>/{name}.html + index.html
+5. bash tools/validate.sh        # 验证 frontmatter
+6. 验证 build output(文件存在 + 链接)
+</code></pre>
+
+<p>> </strong>重要<strong>:build.yml </strong>不会<strong> 触发 GitHub Pages build。
+> GitHub Pages build 由 <code>pages-build-deployment</code> workflow 单独触发。</p>
+
+<h2>⚙️ API 配置</h2>
+
+<pre><code class="language-bash"><h1>当前状态</h1>
+gh api repos/godlockin/kallax-experts/pages | python3 -m json.tool
+
+<h1>改 source branch</h1>
+gh api -X PUT repos/godlockin/kallax-experts/pages \
+  --input '{"source":{"branch":"<branch>","path":"/<path>"}}'
+
+<h1>触发 build</h1>
+git push origin <branch>  # 自动触发
+<h1>或</h1>
+gh workflow run "pages-build-deployment"
+</code></pre>
+
+<h2>🔒 隐私保护</h2>
+
+</strong>所有 .md / .html 文件已脱敏<strong>:
+- 无真实人名 / 邮箱 / 公司
+- 维护者显示 <code>@test-maintainer</code>
+- 仓库地址显示 <code>your-org/kallax-experts</code>(README 中)
+- 但实际 GitHub URL 用真实 <code>godlockin/kallax-experts</code>
+
+<h2>⚠️ 已知问题</h2>
+
+<p>1. </strong>CDN 缓存<strong>:GitHub Pages CDN 缓存约 1-5 分钟,push 后不会立即看到
+2. </strong>404 on first deploy<strong>:默认分支 / path 不匹配时,旧 URL 可能 404(已 fix: branch=miao)
+3. </strong>Workflow 失败重试**:GitHub Actions 偶发 "Deployment failed, try again later"(已 fix: 空 commit 触发)</p>
+
+<h2>📊 已部署 URL 状态</h2>
+
+<pre><code class="language-bash">$ for url in "" "experts/" "experts/tech/security/security-engineer.html" \
+            "USAGE.html" "ARCHITECTURE.html" "experts/data.json"; do
+    code=$(curl -sL -o /dev/null -w "%{http_code}" "https://godlockin.github.io/kallax-experts/$url")
+    echo "  $code  /$url"
+done
+<h1>期望:全 200</h1>
+</code></pre>
+
+<h2>🔧 故障排查</h2>
+
+<h3>URL 404</h3>
+- ✅ 检查 <code>gh api pages</code> 是否有 status: built
+- ✅ 检查 <code>path</code> 是否正确(branch=miao, path=/docs)
+- ✅ 检查文件是否在 docs/(不是根)
+- ✅ 等待 5-10 分钟(CDN 缓存)
+
+<h3>Build failed: "Deployment failed, try again later"</h3>
+- ✅ 等 1 小时重试(GitHub 临时服务问题)
+- ✅ 空 commit 触发:<code>git commit --allow-empty -m "retry"</code>
+
+<h3>Workflow 失败</h3>
+- ✅ 看 <code>gh run view <run-id> --log</code>
+- ✅ 修 docs/ 里不合法 frontmatter
+
+<h2>📜 历史</h2>
+
+<table>
+<tr><td>时间</td><td>事件</td></tr>
+<tr><td>2026-07-05</td><td>创建仓库 + 首批 5 expert</td></tr>
+<tr><td>2026-07-05</td><td>加 10 expert(借鉴 eket + agency)</td></tr>
+<tr><td>2026-07-06</td><td>加 compose.sh + GitHub Pages 部署</td></tr>
+<tr><td>2026-07-06</td><td>启用 Pages(build_type=legacy)</td></tr>
+<tr><td>2026-07-07</td><td>加 experts 列表 + JS 搜索</td></tr>
+<tr><td>2026-07-07</td><td>加 build.yml CI 自动 build</td></tr>
+<tr><td>2026-07-07</td><td>修 path 链接(docs/ → /)</td></tr>
+</table>
+
+<h2>🔗 关联文件</h2>
+
+<p>- <code>index.html</code> — 根入口(GitHub Pages 站根)
+- <code>docs/PAGES.md</code> — 本文件
+- <code>docs/README.md</code> — 项目说明
+- <code>tools/build-html.py</code> — .md → .html
+- <code>tools/build-experts.py</code> — expert 列表 + 详情页
+- <code>tools/validate.sh</code> — frontmatter 验证
+- <code>.github/workflows/build.yml</code> — CI 自动 build
+- <code>.github/workflows/validate.yml</code> — frontmatter 验证 CI
+- <code>.github/workflows/pages.yml</code> —(已删除,GitHub 自动 pages-build-deployment 接管)</p>
+<hr>
+<p class="back">
+  <a href="https://github.com/godlockin/kallax-experts/blob/main/docs/PAGES.md">📝 在 GitHub 上编辑此页</a>
+  · <a href="https://github.com/godlockin/kallax-experts">kallax-experts</a>
+</p>
+</body>
+</html>
