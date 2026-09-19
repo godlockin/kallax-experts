@@ -1,3 +1,8 @@
+> **License**: PolyForm Noncommercial 1.0.0
+> Copyright (c) 2026 godlockin
+> 个人使用、二创、分发允许,需注明作者;**商业使用需作者书面授权**。
+> 详见 [LICENSE](./LICENSE)。
+
 # kallax-experts / 专家组
 
 > **🚀 GitHub Pages 已部署** → [godlockin.github.io/kallax-experts](https://godlockin.github.io/kallax-experts/) (含 15 expert 可搜索)
